@@ -1,0 +1,134 @@
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.header-menu {
+  display: flex;
+  gap: 40px;
+}
+
+.header-menu a {
+  position: relative;
+  display: inline-block;
+  padding: 16px 0px;
+}
+
+.header-menu a::after {
+  content: "";
+  display: block;
+  width: 0px;
+  height: 2px;
+  border-radius: 10px;
+  background: var(--cor-8);
+  margin-top: 4px;
+  transition: 0.3s ease-in-out;
+  position: absolute;
+}
+
+.header-menu a:hover::after {
+  width: 100%;
+}
+
+.mobile-menu {
+  position: relative;
+  cursor: pointer;
+  display: none;
+}
+
+.line-1,
+.line-2,
+.line-3 {
+  border-radius: 10px;
+  height: 4px;
+  margin: 8px;
+  background: var(--cor-3);
+  transition: transform 0.4s ease-in-out;
+}
+
+.line-1 {
+  width: 40px;
+}
+.line-2 {
+  width: 20px;
+  margin-left: 30px;
+}
+.line-3 {
+  width: 40px;
+}
+
+.mobile-menu.active .line-1 {
+  transform: translateX(10px);
+}
+
+.mobile-menu.active .line-2 {
+  transform: translateX(-15px);
+}
+
+.mobile-menu.active .line-3 {
+  transform: translateX(10px);
+}
+
+@media (max-width: 800px) {
+  .header-menu {
+    position: absolute;
+    border-radius: 20px 0 0 20px;
+    top: 12vh;
+    right: 0;
+    width: 30vh;
+    height: 60vh;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgb(255, 255, 255, 0.24);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(100%);
+    justify-content: space-around;
+    transition:
+      transform 0.3s ease-in-out,
+      opacity 0.3s ease-in-out;
+    z-index: 1;
+  }
+
+  .header-menu li:nth-child(1) {
+    transition-delay: 0.2s;
+  }
+  .header-menu li:nth-child(2) {
+    transition-delay: 0.3s;
+  }
+  .header-menu li:nth-child(3) {
+    transition-delay: 0.4s;
+  }
+  .header-menu li:nth-child(4) {
+    transition-delay: 0.5s;
+  }
+  .header-menu li {
+    text-transform: uppercase;
+    margin-left: 0;
+    opacity: 0;
+    transform: translateX(40px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+  .mobile-menu {
+    display: block;
+  }
+
+  .header-menu.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+  }
+  .header-menu.active li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

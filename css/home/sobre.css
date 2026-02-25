@@ -1,0 +1,54 @@
+.sobre {
+  display: grid;
+  grid-template-columns: 6fr 5fr;
+  justify-content: center;
+  gap: 0 50px;
+  position: relative;
+  margin-bottom: 120px;
+}
+
+.sobre::before {
+  content: "";
+  background: url("../../img/icones/sobre/curso.svg") no-repeat;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  margin-left: -10px;
+}
+
+.sobre-conteudo {
+  align-self: center;
+}
+
+.sobre-conteudo::before {
+  content: "";
+  background: url("../../img/icones/sobre/periodo.svg") no-repeat;
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  left: 400px;
+  top: 350px;
+}
+
+.sobre h2 {
+  margin-bottom: 60px;
+}
+
+.sobre p {
+  margin-bottom: 32px;
+}
+
+@media (max-width: 1200px) {
+  .sobre-conteudo::before,
+  .sobre::before {
+    display: none;
+  }
+  .sobre-imagem {
+    display: none;
+  }
+
+  .sobre {
+    grid-template-columns: 1fr;
+    margin-bottom: 60px;
+  }
+}

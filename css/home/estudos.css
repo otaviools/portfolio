@@ -1,0 +1,79 @@
+.estudos {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.estudos h2 {
+  margin-bottom: 60px;
+}
+
+.estudos dl > div {
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  background-color: var(--cor-0);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.estudos dl > div:hover {
+  transform: scale(1) translateY(-4px);
+}
+
+.estudos dl > div:nth-child(odd) {
+  background-color: var(--cor-2);
+}
+
+.estudos dt {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.estudos dt::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 8px;
+  background-color: var(--cor-7);
+}
+
+.estudos dt::after {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 14px;
+  background: url("../../img/icones/seta.svg");
+  transition: 0.3s;
+}
+
+.estudos dt:hover::after {
+  transform: rotate(180deg);
+}
+
+.estudos dd {
+  padding-left: 20px;
+  padding-top: 16px;
+  max-width: 100ch;
+}
+
+.estudos a {
+  transition: 0.3s;
+}
+
+.estudos a:hover {
+  color: var(--cor-6);
+}
+
+@media (max-width: 800px) {
+  .estudos {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .estudos h2 {
+    margin-bottom: 40px;
+  }
+}

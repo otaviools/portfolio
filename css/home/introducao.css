@@ -1,0 +1,43 @@
+.introducao {
+  gap: 0px 100px;
+  padding-top: 100px;
+}
+
+.introducao-conteudo {
+  align-self: end;
+  max-width: 600px;
+  padding-bottom: 150px;
+}
+
+.introducao-botoes {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.introducao h1 {
+  margin-bottom: 20px;
+}
+
+.introducao p {
+  padding-bottom: 20px;
+}
+
+@media (max-width: 800px) {
+  .introducao {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 40px;
+  }
+
+  .introducao-conteudo {
+    padding-bottom: 80px;
+  }
+
+  .introducao h1 {
+    margin-bottom: 20px;
+  }
+  .introducao p {
+    padding-bottom: 20px;
+  }
+}
