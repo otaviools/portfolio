@@ -98,31 +98,25 @@
     translate: -100%;
   }
 }
+.color {
+  display: none;
+}
 
-@media (hover: none) {
-  .card .bw {
-    opacity: 1 !important;
-  }
-
-  .card .color {
-    opacity: 0 !important;
-    display: none !important;
+@media (hover: hover) {
+  .color {
+    display: block;
+    opacity: 0;
   }
 
   .card:hover .bw {
-    opacity: 1 !important;
+    opacity: 0;
   }
 
   .card:hover .color {
-    opacity: 0 !important;
-    display: none !important;
+    opacity: 1;
   }
 
   .card:hover img {
-    transform: none !important;
-  }
-
-  .card::after {
-    display: none !important;
+    transform: translateY(-8px) scale(1.15);
   }
 }

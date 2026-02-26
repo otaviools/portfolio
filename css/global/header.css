@@ -120,6 +120,38 @@
   transform: translateX(0);
 }
 
+.sideBar li {
+  opacity: 0;
+  transform: translateX(20px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.sideBar.active li {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sideBar.active li:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.sideBar.active li:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.sideBar.active li:nth-child(4) {
+  transition-delay: 0.3s;
+}
+.sideBar.active li:nth-child(5) {
+  transition-delay: 0.4s;
+}
+.sideBar.active li:nth-child(6) {
+  transition-delay: 0.5s;
+}
+.sideBar.active li:nth-child(7) {
+  transition-delay: 0.6s;
+}
+
 @media (max-width: 800px) {
   .header {
     padding: 20px;
