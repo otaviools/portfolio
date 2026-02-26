@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: spin 12s infinite linear;
+  animation: spin 15s infinite linear;
   padding-right: 1em;
 }
 
@@ -99,19 +99,32 @@
   }
 }
 
+@media (hover: none) {
+  .card:hover .bw {
+    opacity: 1;
+  }
+  .card:hover .color {
+    opacity: 0;
+  }
+  .card:hover img {
+    transform: none;
+  }
+  .card::after {
+    display: none;
+  }
+}
+
 @media (max-width: 800px) {
   .carousel {
-    padding-top: 40px;
+    padding-top: 20px;
   }
+
   .card {
-    padding: 20px 3px;
+    flex: 0 0 4em;
+    padding: 20px 12px;
   }
 
   .card img {
     width: 60px;
-  }
-
-  .card::after {
-    font-size: 0.7rem;
   }
 }

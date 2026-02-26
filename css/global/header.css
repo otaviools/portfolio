@@ -105,7 +105,7 @@
   box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.1);
   flex-direction: column;
   align-items: flex-start;
-  padding: 100px 30px;
+  padding: 40px 30px;
   justify-content: flex-start;
   backdrop-filter: blur(50px);
   opacity: 0;
