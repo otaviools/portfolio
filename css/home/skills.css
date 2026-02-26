@@ -121,9 +121,18 @@
 
   .card img {
     width: 70px;
+    transition: none;
   }
 
   .card::after {
     display: none;
+  }
+
+  .bw {
+    display: none;
+  }
+
+  .color {
+    opacity: 1;
   }
 }
