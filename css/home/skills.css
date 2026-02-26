@@ -98,25 +98,32 @@
     translate: -100%;
   }
 }
-.color {
-  display: none;
+
+@media (hover: none) {
+  .carousel,
+  .card,
+  .card img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
 }
 
-@media (hover: hover) {
-  .color {
-    display: block;
-    opacity: 0;
+@media (max-width: 800px) {
+  .carousel {
+    padding-top: 20px;
   }
 
-  .card:hover .bw {
-    opacity: 0;
+  .card {
+    flex: 0 0 4em;
+    padding: 10px 20px;
   }
 
-  .card:hover .color {
-    opacity: 1;
+  .card img {
+    width: 70px;
   }
 
-  .card:hover img {
-    transform: translateY(-8px) scale(1.15);
+  .card::after {
+    display: none;
   }
 }

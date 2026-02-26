@@ -18,6 +18,20 @@ sideBarLinks.forEach(function (link) {
   });
 });
 
+//Script Skills Mobile
+
+const isMobile = window.matchMedia("(hover: none)").matches;
+
+if (isMobile) {
+  document.querySelectorAll(".bw").forEach((img) => img.remove());
+  document.querySelectorAll(".color").forEach((img) => {
+    img.style.opacity = "1";
+  });
+  document.querySelectorAll(".card").forEach((card) => {
+    card.style.pointerEvents = "none";
+  });
+}
+
 //Script Animação
 
 const observer = new IntersectionObserver((entries) => {
