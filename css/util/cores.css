@@ -12,6 +12,7 @@
   --cor-10: #2e2e2e;
   --cor-11: #111111;
   --cor-12: #000000;
+  --card-cima-bg: var(--cor-10);
 }
 
 .cor-0 {
@@ -52,4 +53,23 @@
 }
 .cor-12 {
   color: var(--cor-12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cor-0: #111111;
+    --cor-1: #1a1a1a;
+    --cor-2: #2e2e2e;
+    --cor-3: #404040;
+    --cor-4: #595959;
+    --cor-5: #717171;
+    --cor-6: #9c9c9c;
+    --cor-7: #b2b2b2;
+    --cor-8: #cccccc;
+    --cor-9: #dedede;
+    --cor-10: #ededed;
+    --cor-11: #f7f7f7;
+    --cor-12: #ffffff;
+    --card-cima-bg: #1a1a1a;
+  }
 }
