@@ -1,3 +1,7 @@
+.work-bg {
+  padding-top: 200px;
+}
+
 .work-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -71,8 +75,20 @@ p:nth-of-type(1) {
 .work-card-3:hover .icon-3 {
   transform: scale(1.2) rotate(2deg);
 }
+.work-card-1 {
+  transition: 600ms;
+}
+.work-card-2 {
+  transition: 400ms;
+}
+.work-card-3 {
+  transition: 200ms;
+}
 
 @media (max-width: 800px) {
+  .work-bg {
+    padding-top: 40px;
+  }
   .work-container {
     grid-template-columns: 1fr;
   }

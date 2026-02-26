@@ -25,7 +25,7 @@
 }
 
 .info-contato li {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .info-contato li > a {
@@ -53,18 +53,22 @@
 }
 
 .direitos {
-  grid-column: 1;
-  margin-top: -60px;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 @media (max-width: 800px) {
   .footer {
     grid-template-columns: 1fr;
-    padding-top: 20px;
+    padding-top: 100px;
     gap: 20px;
   }
   .direitos {
-    margin-top: 20px;
+    padding-top: 10px;
+    padding-left: 20px;
     font-size: 1rem;
+    justify-content: start;
   }
 }

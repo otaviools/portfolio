@@ -1,10 +1,13 @@
+.sobre-bg {
+  padding-top: 160px;
+}
+
 .sobre {
   display: grid;
   grid-template-columns: 6fr 5fr;
   justify-content: center;
   gap: 0 50px;
   position: relative;
-  margin-bottom: 120px;
 }
 
 .sobre::before {
@@ -17,6 +20,7 @@
 }
 
 .sobre-conteudo {
+  padding-top: 20px;
   align-self: center;
 }
 
@@ -39,6 +43,9 @@
 }
 
 @media (max-width: 1200px) {
+  .sobre-bg {
+    padding-top: 100px;
+  }
   .sobre-conteudo::before,
   .sobre::before {
     display: none;
