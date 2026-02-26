@@ -100,24 +100,19 @@
 }
 
 @media (max-width: 800px) {
-  .color,
+  .color {
+    display: none !important;
+  }
+
   .card::after {
-    display: none;
+    display: none !important;
+  }
+
+  .card:hover img {
+    transform: none !important;
   }
 
   .bw {
     opacity: 1 !important;
-  }
-
-  .card {
-    padding: 20px 5px;
-  }
-
-  .card img {
-    width: 60px;
-  }
-
-  .card:hover img {
-    transform: none;
   }
 }
