@@ -16,7 +16,8 @@
   position: absolute;
   width: 200px;
   height: 200px;
-  margin-left: -10px;
+  margin-left: 16px;
+  animation: flutuar 3s ease-in-out infinite;
 }
 
 .sobre-conteudo {
@@ -30,8 +31,9 @@
   position: absolute;
   width: 300px;
   height: 200px;
-  left: 400px;
-  top: 350px;
+  left: 350px;
+  top: 360px;
+  animation: flutuar 3s ease-in-out infinite;
 }
 
 .sobre h2 {
@@ -40,6 +42,16 @@
 
 .sobre p {
   margin-bottom: 32px;
+}
+
+@keyframes flutuar {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 @media (max-width: 1200px) {

@@ -99,32 +99,25 @@
   }
 }
 
-@media (hover: none) {
-  .card:hover .bw {
-    opacity: 1;
-  }
-  .card:hover .color {
-    opacity: 0;
-  }
-  .card:hover img {
-    transform: none;
-  }
+@media (max-width: 800px) {
+  .color,
   .card::after {
     display: none;
   }
-}
 
-@media (max-width: 800px) {
-  .carousel {
-    padding-top: 20px;
+  .bw {
+    opacity: 1 !important;
   }
 
   .card {
-    flex: 0 0 5em;
-    padding: 20px 40px;
+    padding: 20px 5px;
   }
 
   .card img {
     width: 60px;
+  }
+
+  .card:hover img {
+    transform: none;
   }
 }

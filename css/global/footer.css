@@ -52,11 +52,22 @@
   color: var(--cor-6);
 }
 
-.direitos {
+.back-image {
   display: flex;
+  gap: 40px;
   justify-content: center;
-  padding-top: 40px;
+  padding-top: 50px;
   padding-bottom: 40px;
+  background: var(--cor-1);
+}
+
+.back-image img {
+  width: 30px;
+  height: 30px;
+  transition: all 0.3s;
+}
+.back-image img:hover {
+  transform: translateY(-10px);
 }
 
 @media (max-width: 800px) {
@@ -65,10 +76,13 @@
     padding-top: 100px;
     gap: 20px;
   }
-  .direitos {
+  .back-image {
     padding-top: 10px;
-    padding-left: 20px;
-    font-size: 1rem;
+    padding-left: 30px;
+    gap: 20px;
     justify-content: start;
+  }
+  .back-image p {
+    font-size: 1rem;
   }
 }
