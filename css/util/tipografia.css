@@ -99,13 +99,13 @@
 .font-1-xl {
   font:
     700 2rem/1.25 "Satoshi",
-    "Poppins" sans-serif;
+    sans-serif;
 }
 
 .font-1-xxl {
   font:
     900 3.5rem/1.3 "Satoshi",
-    "Poppins" sans-serif;
+    sans-serif;
 }
 
 @media (max-width: 1200px) {
