@@ -33,3 +33,25 @@ const observer = new IntersectionObserver((entries) => {
 
 const hiddenElements = document.querySelectorAll(".hidden");
 hiddenElements.forEach((el) => observer.observe(el));
+
+//Estudos
+
+const estudos = document.querySelectorAll(".estudos button");
+
+function ativarEstudo(event) {
+  const estudo = event.currentTarget;
+  const controls = estudo.getAttribute("aria-controls");
+  const resposta = document.getElementById(controls);
+
+  resposta.classList.toggle("ativa");
+  const ativa = resposta.classList.contains("ativa");
+  estudo.setAttribute("aria-expanded", ativa);
+}
+
+function eventosEstudos(estudo) {
+  estudo.addEventListener("click", ativarEstudo);
+}
+
+estudos.forEach(eventosEstudos);
+
+console.log(estudos);

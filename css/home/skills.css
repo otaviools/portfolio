@@ -99,12 +99,22 @@
   }
 }
 
-@media (max-width: 800px) {
-  .color {
+@media (hover: none) {
+  .card .bw {
+    opacity: 1 !important;
+  }
+
+  .card .color {
+    opacity: 0 !important;
     display: none !important;
   }
 
-  .card::after {
+  .card:hover .bw {
+    opacity: 1 !important;
+  }
+
+  .card:hover .color {
+    opacity: 0 !important;
     display: none !important;
   }
 
@@ -112,7 +122,7 @@
     transform: none !important;
   }
 
-  .bw {
-    opacity: 1 !important;
+  .card::after {
+    display: none !important;
   }
 }
