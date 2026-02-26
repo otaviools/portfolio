@@ -120,8 +120,8 @@
   }
 
   .card {
-    flex: 0 0 4em;
-    padding: 20px 12px;
+    flex: 0 0 5em;
+    padding: 20px 40px;
   }
 
   .card img {
