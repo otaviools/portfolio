@@ -3,6 +3,13 @@
   display: flex;
   overflow-x: hidden;
   position: relative;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -17,8 +24,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   animation: spin 15s infinite linear;
   padding-right: 1em;
+  will-change: transform;
 }
 
 .card {
@@ -34,7 +43,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  translate: -50% -50%;
+  transform: translate(-50%, -50%);
 }
 
 .bw {
@@ -62,7 +71,7 @@
     position: absolute;
     bottom: 0px;
     left: 50%;
-    translate: -50% 0;
+    transform: translateX(-50%);
     background: var(--cor-10);
     color: var(--cor-0);
     padding: 4px 8px;
@@ -83,8 +92,9 @@
   .card:hover .color {
     opacity: 1;
   }
+
   .card:hover img {
-    transform: translateY(-8px) scale(1.15);
+    transform: translate(-50%, calc(-50% - 8px)) scale(1.15);
   }
 }
 
@@ -92,16 +102,13 @@
   .carousel {
     padding-top: 20px;
   }
-
   .card {
     flex: 0 0 4em;
-    padding: 10px 20px;
+    padding: 20px 20px;
   }
-
   .card img {
-    width: 60px;
+    width: 70px;
   }
-
   .bw {
     display: none;
   }
@@ -110,11 +117,12 @@
   }
 }
 
+/* Ajuste na animação para usar transform (padrão Safari) */
 @keyframes spin {
   from {
-    translate: 0;
+    transform: translateX(0);
   }
   to {
-    translate: -100%;
+    transform: translateX(-100%);
   }
 }

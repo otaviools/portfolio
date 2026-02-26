@@ -53,5 +53,3 @@ function eventosEstudos(estudo) {
 }
 
 estudos.forEach(eventosEstudos);
-
-console.log(estudos);
