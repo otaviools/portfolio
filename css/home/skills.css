@@ -13,10 +13,6 @@
   z-index: 0;
 }
 
-.carousel::-webkit-scrollbar {
-  display: none;
-}
-
 .group {
   display: flex;
   align-items: center;
@@ -33,79 +29,62 @@
   pointer-events: none;
 }
 
-.card::after {
-  content: attr(data-name);
-  font-family: "Satoshi";
-  font-weight: 600;
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
-  translate: -50% 0;
-  background: #2e2e2e;
-  color: #b2b2b2;
-  padding: 4px 8px;
-  border-radius: 5px;
-  font-size: 1rem;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-}
-
-.card:hover::after {
-  opacity: 1;
-}
-
 .card img {
   width: 80px;
-  pointer-events: all;
   position: absolute;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-  transition:
-    transform 0.3s ease,
-    filter 0.3s ease,
-    opacity 0.3s ease;
-  will-change: opacity, transform;
 }
 
 .bw {
   opacity: 1;
 }
-
 .color {
   opacity: 0;
 }
 
-.card:hover .bw {
-  opacity: 0;
-}
-
-.card:hover .color {
-  opacity: 1;
-}
-
-.card:hover img {
-  transform: translateY(-8px) scale(1.15);
-}
-
-@keyframes spin {
-  from {
-    translate: 0;
+@media (hover: hover) and (pointer: fine) {
+  .card {
+    pointer-events: all;
   }
-  to {
-    translate: -100%;
-  }
-}
 
-@media (hover: none) {
-  .carousel,
-  .card,
   .card img {
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  .card::after {
+    content: attr(data-name);
+    font-family: "Satoshi";
+    font-weight: 600;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    translate: -50% 0;
+    background: var(--cor-10);
+    color: var(--cor-0);
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 1rem;
+    white-space: nowrap;
+    opacity: 0;
     pointer-events: none;
-    user-select: none;
-    -webkit-user-select: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .card:hover::after {
+    opacity: 1;
+  }
+  .card:hover .bw {
+    opacity: 0;
+  }
+  .card:hover .color {
+    opacity: 1;
+  }
+  .card:hover img {
+    transform: translateY(-8px) scale(1.15);
   }
 }
 
@@ -120,19 +99,22 @@
   }
 
   .card img {
-    width: 70px;
-    transition: none;
-  }
-
-  .card::after {
-    display: none;
+    width: 60px;
   }
 
   .bw {
     display: none;
   }
-
   .color {
     opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    translate: 0;
+  }
+  to {
+    translate: -100%;
   }
 }
