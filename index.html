@@ -6,24 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Desenvolvedor FullStack & Designer - Disponível !">
   <title>Otávio - FullStack Developer</title>
-  <link rel="icon" href="./img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="icon" href="./img/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="./img/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+  <link rel="preload" href="./css/style.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="./fonts/satoshi/Satoshi-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/satoshi/Satoshi-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/satoshi/Satoshi-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <noscript>
+    <link rel="stylesheet" href="./css/style.css">
+  </noscript>
 </head>
 
 <body id="home">
   <header class="header-bg">
     <div class="header">
-      <a class="logo" href="#home">
+      <a class="logo" href="#home" aria-label="Voltar para Página Inicial">
         <picture>
           <source srcset="./img/icones/logo-branca.svg" media="(prefers-color-scheme: dark)">
-          <img src="./img/icones/logo-sombra-preta.svg" alt="">
+          <img src="./img/icones/logo-sombra-preta.svg" width="60" height="54" alt="">
         </picture>
       </a>
       <nav aria-label="primaria">
-        <ul class="header-menu font-1-m cor-12">
+        <ul class="header-menu font-1-m-medium cor-12">
           <li class="hideMobile"><a href="#sobre">Sobre</a></li>
           <li class="hideMobile"><a href="#servicos">Serviços</a></li>
           <li class="hideMobile"><a href="#estudos">Estudos</a></li>
@@ -56,8 +60,8 @@
     </div>
   </header>
 
-  <main class="introducao-bg hidden">
-    <div class="introducao container">
+  <main class="introducao-bg">
+    <div class="introducao container hidden">
       <div class="introducao-conteudo">
         <h1 class="font-1-xxl cor-12">Independente & FullStack Developer<span class="cor-8">.</span></h1>
         <p class="font-2-l cor-10">Olá, sou Otávio, um Desenvolvedor e Designer há 365 dias sem dormir, entregando projetos e estudando...</p>
@@ -73,123 +77,123 @@
     <div class="carousel">
       <div class="group">
         <div class="card" data-name="HTML">
-          <img class="bw" src="./img/icones/skills/html.svg" alt="">
-          <img class="color" src="./img/icones/skills/color/html-colorido.svg" alt="">
+          <img class="bw" src="./img/icones/skills/html.svg" width="70" height="70" alt="">
+          <img class="color" src="./img/icones/skills/color/html-colorido.svg" width="76" height="70" alt="">
         </div>
         <div class="card" data-name="CSS">
-          <img class="bw" src="./img/icones/skills/css.svg" alt="">
-          <img class="color" src="./img/icones/skills/color/css-colorido.svg" alt="">
+          <img class="bw" src="./img/icones/skills/css.svg" width="70" height="70" alt="">
+          <img class="color" src="./img/icones/skills/color/css-colorido.svg" width="74" height="72" alt="">
 
         </div>
         <div class="card" data-name="JavaScript">
-          <img class="bw" src="./img/icones/skills/javascript.svg" alt="">
-          <img class="color" src="./img/icones/skills/color/javascript-colorido.svg" alt="">
+          <img class="bw" src="./img/icones/skills/javascript.svg" width="70" height="70" alt="">
+          <img class="color" src="./img/icones/skills/color/javascript-colorido.svg" width="76" height="70" alt="">
 
         </div>
         <div class="card" data-name="Node.js">
-          <img class="bw" src="./img/icones/skills/node-js.svg" alt="">
-          <img class="color" src="./img/icones/skills/color/node-js-colorido.svg" alt="">
+          <img class="bw" src="./img/icones/skills/node-js.svg" width="70" height="70" alt="">
+          <img class="color" src="./img/icones/skills/color/node-js-colorido.svg" width="72" height="70" alt="">
 
         </div>
         <div class="card" data-name="Java">
-          <img class="bw" src="./img/icones/skills/java.svg" alt="">
-          <img class="color" src="./img/icones/skills/color/java-colorido.svg" alt="">
+          <img class="bw" src="./img/icones/skills/java.svg" width="70" height="70" alt="">
+          <img class="color" src="./img/icones/skills/color/java-colorido.svg" width="72" height="70" alt="">
 
         </div>
         <div class="card" data-name="Python">
-          <img class="bw" src="./img/icones/skills/python.svg" alt="">
-          <img class="color" src="./img/icones/skills/color/python-colorido.svg" alt="">
+          <img class="bw" src="./img/icones/skills/python.svg" width="70" height="70" alt="">
+          <img class="color" src="./img/icones/skills/color/python-colorido.svg" width="75" height="70" alt="">
 
         </div>
         <div class="card" data-name="C">
-          <img class="bw" src="./img/icones/skills/c.svg" alt="">
-          <img class="color" src="./img/icones/skills/color/c-colorido.svg" alt="">
+          <img class="bw" src="./img/icones/skills/c.svg" width="70" height="70" alt="">
+          <img class="color" src="./img/icones/skills/color/c-colorido.svg" width="76" height="70" alt="">
 
         </div>
         <div class="card" data-name="PostgreeSQL">
-          <img class="bw" src="./img/icones/skills/postgresql.svg" alt="">
-          <img class="color" src="./img/icones/skills/color/postgresql-colorido.svg" alt="">
+          <img class="bw" src="./img/icones/skills/postgresql.svg" width="70" height="70" alt="">
+          <img class="color" src="./img/icones/skills/color/postgresql-colorido.svg" width="73" height="71" alt="">
 
         </div>
         <div class="card" data-name="Office 365">
-          <img class="bw" src="./img/icones/skills/microsoft-365.svg" alt="">
-          <img class="color" src="./img/icones/skills/color/microsoft-365-colorido.svg" alt="">
+          <img class="bw" src="./img/icones/skills/microsoft-365.svg" width="70" height="70" alt="">
+          <img class="color" src="./img/icones/skills/color/microsoft-365-colorido.svg" width="77" height="70" alt="">
 
         </div>
         <div class="card" data-name="Git">
-          <img class="bw" src="./img/icones/skills/git.svg" alt="">
-          <img class="color" src="./img/icones/skills/color/git-colorido.svg" alt="">
+          <img class="bw" src="./img/icones/skills/git.svg" width="70" height="70" alt="">
+          <img class="color" src="./img/icones/skills/color/git-colorido.svg" width="76" height="70" alt="">
 
         </div>
         <div class="card" data-name="Canva">
-          <img class="bw" src="./img/icones/skills/canva.svg" alt="">
-          <img class="color" src="./img/icones/skills/color/canva-colorido.svg" alt="">
+          <img class="bw" src="./img/icones/skills/canva.svg" width="70" height="70" alt="">
+          <img class="color" src="./img/icones/skills/color/canva-colorido.svg" width="76" height="70" alt="">
 
         </div>
         <div class="card" data-name="Figma">
-          <img class="bw" src="./img/icones/skills/figma.svg" alt="">
-          <img class="color" src="./img/icones/skills/color/figma-colorido.svg" alt="">
+          <img class="bw" src="./img/icones/skills/figma.svg" width="70" height="70" alt="">
+          <img class="color" src="./img/icones/skills/color/figma-colorido.svg" width="77" height="70" alt="">
 
         </div>
       </div>
 
       <div aria-hidden class="group">
         <div class="card" data-name="HTML">
-          <img class="bw" src="./img/icones/skills/html.svg" alt="">
+          <img class="bw" src="./img/icones/skills/html.svg" width="70" height="70" alt="">
           <img class="color" src="./img/icones/skills/color/html-colorido.svg" alt="">
         </div>
         <div class="card" data-name="CSS">
-          <img class="bw" src="./img/icones/skills/css.svg" alt="">
+          <img class="bw" src="./img/icones/skills/css.svg" width="70" height="70" alt="">
           <img class="color" src="./img/icones/skills/color/css-colorido.svg" alt="">
 
         </div>
         <div class="card" data-name="JavaScript">
-          <img class="bw" src="./img/icones/skills/javascript.svg" alt="">
+          <img class="bw" src="./img/icones/skills/javascript.svg" width="70" height="70" alt="">
           <img class="color" src="./img/icones/skills/color/javascript-colorido.svg" alt="">
 
         </div>
         <div class="card" data-name="Node.js">
-          <img class="bw" src="./img/icones/skills/node-js.svg" alt="">
+          <img class="bw" src="./img/icones/skills/node-js.svg" width="70" height="70" alt="">
           <img class="color" src="./img/icones/skills/color/node-js-colorido.svg" alt="">
 
         </div>
         <div class="card" data-name="Java">
-          <img class="bw" src="./img/icones/skills/java.svg" alt="">
+          <img class="bw" src="./img/icones/skills/java.svg" width="70" height="70" alt="">
           <img class="color" src="./img/icones/skills/color/java-colorido.svg" alt="">
 
         </div>
         <div class="card" data-name="Python">
-          <img class="bw" src="./img/icones/skills/python.svg" alt="">
+          <img class="bw" src="./img/icones/skills/python.svg" width="70" height="70" alt="">
           <img class="color" src="./img/icones/skills/color/python-colorido.svg" alt="">
 
         </div>
         <div class="card" data-name="C">
-          <img class="bw" src="./img/icones/skills/c.svg" alt="">
+          <img class="bw" src="./img/icones/skills/c.svg" width="70" height="70" alt="">
           <img class="color" src="./img/icones/skills/color/c-colorido.svg" alt="">
 
         </div>
         <div class="card" data-name="PostgreeSQL">
-          <img class="bw" src="./img/icones/skills/postgresql.svg" alt="">
+          <img class="bw" src="./img/icones/skills/postgresql.svg" width="70" height="70" alt="">
           <img class="color" src="./img/icones/skills/color/postgresql-colorido.svg" alt="">
 
         </div>
         <div class="card" data-name="Office 365">
-          <img class="bw" src="./img/icones/skills/microsoft-365.svg" alt="">
+          <img class="bw" src="./img/icones/skills/microsoft-365.svg" width="70" height="70" alt="">
           <img class="color" src="./img/icones/skills/color/microsoft-365-colorido.svg" alt="">
 
         </div>
         <div class="card" data-name="Git">
-          <img class="bw" src="./img/icones/skills/git.svg" alt="">
+          <img class="bw" src="./img/icones/skills/git.svg" width="70" height="70" alt="">
           <img class="color" src="./img/icones/skills/color/git-colorido.svg" alt="">
 
         </div>
         <div class="card" data-name="Canva">
-          <img class="bw" src="./img/icones/skills/canva.svg" alt="">
+          <img class="bw" src="./img/icones/skills/canva.svg" width="70" height="70" alt="">
           <img class="color" src="./img/icones/skills/color/canva-colorido.svg" alt="">
 
         </div>
         <div class="card" data-name="Figma">
-          <img class="bw" src="./img/icones/skills/figma.svg" alt="">
+          <img class="bw" src="./img/icones/skills/figma.svg" width="70" height="70" alt="">
           <img class="color" src="./img/icones/skills/color/figma-colorido.svg" alt="">
 
         </div>
@@ -201,11 +205,11 @@
     <div class="sobre container hidden">
       <div class="sobre-imagem">
         <picture>
-          <img src="./img/fotos/foto-sobre.png" alt="">
+          <img src="./img/fotos/foto-sobre.webp" alt="">
         </picture>
       </div>
       <div class="sobre-conteudo">
-        <h2 class="font-1-xl cor-12"><span class="cor-6">De “viciado” em Minecraft</span> a Desenvolvedor FullStack</h2>
+        <h2 class="font-1-xl cor-12"><span class="cor-12">De “viciado” em Minecraft</span> a Desenvolvedor FullStack</h2>
         <p class="font-2-l cor-10">Há cerca de 9 anos, criei um canal no YouTube onde produzia vídeos de Minecraft. Foi nesse período que comecei a me interessar mais profundamente por <strong>tecnologia.</strong></p>
         <p class="font-2-l cor-10">De forma autodidata, aprendi <strong>montagem e formatação de computadores, explorando hardware, sistemas operacionais</strong> e soluções de problemas. Com o tempo, passei a estudar a interação entre componentes físicos, software e arquitetura do sistema.</p>
       </div>
@@ -218,45 +222,45 @@
       <div class="work-container">
         <div class="work-card-1 hidden">
           <div class="icon-1">
-            <img src="./img/icones/work/code.svg" alt="">
+            <img src="./img/icones/work/code.svg" width="48" height="48" alt="">
           </div>
           <h3 class="font-1-lm cor-11">Desenvolvimento Full-Stack<span class="cor-8">.</span></h3>
           <p class="font-1-sm cor-8"><strong>HTML, CSS, JS, Node.js & PostgreSQL.</strong></p>
           <p class="font-2-xs cor-7">Desenvolvimento completo de aplicações web, unindo performance, organização de código e experiência do usuário.</p>
           <ul>
-            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" alt="">Código limpo e organizado.</li>
-            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" alt="">APis e integração de sistemas.</li>
-            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" alt="">Foco em performance e escalabilidade.</li>
+            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" width="14" height="14" alt="">Código limpo e organizado.</li>
+            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" width="14" height="14" alt="">APis e integração de sistemas.</li>
+            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" width="14" height="14" alt="">Foco em performance e escalabilidade.</li>
           </ul>
-          <a class="botao" href="#form">Conversar</a>
+          <a class="botao-escuro" href="#form">Conversar</a>
         </div>
         <div class="work-card-2 hidden">
           <div class="icon-2">
-            <img src="./img/icones/work/design.svg" alt="">
+            <img src="./img/icones/work/design.svg" width="48" height="48" alt="">
           </div>
           <h3 class="font-1-lm cor-11">Design UI/UX & Social Media<span class="cor-8">.</span></h3>
           <p class="font-1-sm cor-8"><strong>Figma & Canva.</strong></p>
           <p class="font-2-xs cor-7">Desenvolvimento de experiências digitais completas, design estratégico, identidade visual e posicionamento nas redes sociais.</p>
           <ul>
-            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" alt="">Layouts modernos e organizados.</li>
-            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" alt="">Foco em clareza visual e hierarquia.</li>
-            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" alt="">Comunicação visual estratégica.</li>
+            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" width="14" height="14" alt="">Layouts modernos e organizados.</li>
+            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" width="14" height="14" alt="">Foco em clareza visual e hierarquia.</li>
+            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" width="14" height="14" alt="">Comunicação visual estratégica.</li>
           </ul>
-          <a class="botao" href="#form">Conversar</a>
+          <a class="botao-escuro" href="#form">Conversar</a>
         </div>
         <div class="work-card-3 hidden">
           <div class="icon-3">
-            <img src="./img/icones/work/analise-dados.svg" alt="">
+            <img src="./img/icones/work/analise-dados.svg" width="48" height="48" alt="">
           </div>
           <h3 class="font-1-lm cor-11">Análise de Dados & Automação<span class="cor-8">.</span></h3>
           <p class="font-1-sm cor-8"><strong>Power BI, Excel & Python.</strong></p>
           <p class="font-2-xs cor-7">Desenvolvimento de soluções em dados, análise estratégica no Power BI com automações em Python e Excel.</p>
           <ul>
-            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" alt="">Dashboards interativos e dinâmicos.</li>
-            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" alt="">Script para coletar e tratar dados.</li>
-            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" alt="">Redução de tempo com automação.</li>
+            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" width="14" height="14" alt="">Dashboards interativos e dinâmicos.</li>
+            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" width="14" height="14" alt="">Script para coletar e tratar dados.</li>
+            <li class="font-2-ss cor-10"><img src="./img/icones/asterisco.svg" width="14" height="14" alt="">Redução de tempo com automação.</li>
           </ul>
-          <a class="botao" href="#form">Conversar</a>
+          <a class="botao-escuro" href="#form">Conversar</a>
         </div>
       </div>
     </div>
@@ -267,22 +271,22 @@
       <h2 class="font-1-xxl cor-12">estudos<span class="cor-7">.</span></h2>
       <dl>
         <div class="estudos-container">
-          <dt><button class="font-1-m-b cor-12" aria-controls="graduacao" aria-expanded="true">Graduando em Sistemas de Informação</button></dt>
+          <dt><button class="font-1-m-b cor-12" aria-controls="graduacao" aria-expanded="true">Graduando em Sistemas de Informação 2025-2030</button></dt>
           <dd id="graduacao" class="font-2-s cor-10 ativa">Atualmente estou no 3° período, na faculdade ESAMC, localizada em Uberlândia - MG,
             com previsão de término em 2030.</dd>
         </div>
         <div class="estudos-container">
-          <dt><button class="font-1-m-b cor-12" aria-controls="curso1" aria-expanded="false">Origamid UI Design para Iniciantes</button></dt>
+          <dt><button class="font-1-m-b cor-12" aria-controls="curso1" aria-expanded="false">Origamid UI Design para Iniciantes - 2025</button></dt>
           <dd id="curso1" class="font-2-s cor-10 ">Curso extracurricular Completo, contendo 34 horas de carga horária.
-            Certificado: <strong><a href="https://www.origamid.com/certificate/9132a2e0" target="_blank">Acesse aqui.</a></strong></dd>
+            Certificado: <strong><a href="https://www.origamid.com/certificate/9132a2e0" target="_blank" aria-label="Certificado curso UI Design para Iniciantes.">Acesse aqui.</a></strong></dd>
         </div>
         <div class="estudos-container">
-          <dt><button class="font-1-m-b cor-12" aria-controls="curso2" aria-expanded="false">Origamid HTML e CSS para Iniciantes</button></dt>
+          <dt><button class="font-1-m-b cor-12" aria-controls="curso2" aria-expanded="false">Origamid HTML e CSS para Iniciantes - 2025</button></dt>
           <dd id="curso2" class="font-2-s cor-10 ">Curso extracurricular Completo, contendo 46 horas de carga horária.
-            Certificado: <strong><a href="https://www.origamid.com/certificate/6ca6a68c" target="_blank">Acesse aqui.</a></strong></dd>
+            Certificado: <strong><a href="https://www.origamid.com/certificate/6ca6a68c" target="_blank" aria-label="Certificado curso HTML e CSS para Iniciantes.">Acesse aqui.</a></strong></dd>
         </div>
         <div class="estudos-container">
-          <dt><button class="font-1-m-b cor-12" aria-controls="curso3" aria-expanded="false">Origamid JavaScript Completo ES6+</button></dt>
+          <dt><button class="font-1-m-b cor-12" aria-controls="curso3" aria-expanded="false">Origamid JavaScript Completo ES6+ - 2025</button></dt>
           <dd id="curso3" class="font-2-s cor-10 ">Curso extracurricular em andamento...</dd>
         </div>
         <div class="estudos-container">
@@ -316,14 +320,14 @@
         </div>
         <div class="card-right">
           <div class="colors">
-            <p class="font-2-m cor-9">colors</p>
+            <p class="font-2-m cor-9">Colors</p>
             <div class="colors-image">
               <img src="./img/icones/portfolio/color-principal-tecimalhas.svg" alt="">
               <img src="./img/icones/portfolio/color-secundaria-tecimalhas.svg" alt="">
             </div>
           </div>
           <div class="tipografia">
-            <p class="font-2-m cor-7">typography</p>
+            <p class="font-2-m cor-7">Typography</p>
             <span class="fonte-principal">Teci</span>
             <p class="fonte-nome">Poppins</p>
             <span class="fonte-secundaria">Teci</span>
@@ -334,7 +338,18 @@
             <p class="fonte-nome">Roboto</p>
           </div>
         </div>
-
+        <div class="card-left">
+          <div class="card-cima">
+            <a href="https://otaviools.github.io/praca-sergio-pacheco/" target="_blank">
+              <p class="font-1-s cor-7"><strong>Landing Page - Dez 2025</strong></p>
+              <img src="./img/icones/portfolio/byd.svg" alt="">
+            </a>
+          </div>
+          <div class="card-baixo">
+            <p class="font-2-m cor-9">Beyond - Praça Sérgio Pacheco, foi desenvolvida com o objetivo de apresentar uma proposta moderna, funcional e centrada na comunidade, valorizando um dos espaços públicos mais tradicionais da cidade.</p>
+            <p class="font-1-m cor-9"><strong>HTML | CSS | JavaScript |</strong></p>
+          </div>
+        </div>
         <div class="card-right">
           <div class="colors">
             <p class="font-2-m cor-9">Colors</p>
@@ -353,18 +368,6 @@
             <p class="fonte-nome">Poppins</p>
             <span class="fonte-secundaria">Beyond</span>
             <p class="fonte-nome">Roboto</p>
-          </div>
-        </div>
-        <div class="card-left">
-          <div class="card-cima">
-            <a href="https://otaviools.github.io/praca-sergio-pacheco/" target="_blank">
-              <p class="font-1-s cor-7"><strong>Landing Page - Dez 2025</strong></p>
-              <img src="./img/icones/portfolio/byd.svg" alt="">
-            </a>
-          </div>
-          <div class="card-baixo">
-            <p class="font-2-m cor-9">Beyond - Praça Sérgio Pacheco, foi desenvolvida com o objetivo de apresentar uma proposta moderna, funcional e centrada na comunidade, valorizando um dos espaços públicos mais tradicionais da cidade.</p>
-            <p class="font-1-m cor-9"><strong>HTML | CSS | JavaScript |</strong></p>
           </div>
         </div>
         <div class="card-left">
@@ -396,10 +399,10 @@
   </section>
 
   <footer class="footer-bg" id="contato">
-    <div class="footer container">
-      <div class="info-conteudo">
-        <h2 class="font-1-xxl cor-12">vamos conversar<span class="cor-7">.</span></h2>
-        <p class="font-2-l cor-10">Descreva seu projeto e seus objetivos preenchendo o formulário ou enviando para <strong><a class="email" href="mailto:otaviools13@gmail.com">otaviools13@gmail.com</a></strong></p>
+    <div class="footer container hidden">
+      <div class="info-conteudo hidden">
+        <h2 class="font-1-xxl cor-12">vamos conversar <span class="cor-7">?</span></h2>
+        <p class="font-2-l cor-10">Descreva seu projeto e seus objetivos preenchendo o formulário ou enviando para <a class="email cor-8" href="mailto:otaviools13@gmail.com">otaviools13@gmail.com</a></p>
         <p class="font-2-l cor-10">Você também pode me encontrar aqui:</p>
         <div class="info-contato">
           <div class="contato">
@@ -453,7 +456,7 @@
       </section>
     </div>
     <div class="back-image">
-      <a href="#home"><img src="./img/icones/seta-back.svg" alt=""></a>
+      <a href="#home"><img src="./img/icones/seta-back.svg" aria-label="Voltar ao topo"></a>
       <p class="direitos font-2-m cor-8">Otávio © Todos os Direitos Reservados</p>
     </div>
   </footer>

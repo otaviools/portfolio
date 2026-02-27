@@ -8,7 +8,9 @@
 }
 
 .botao {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0px;
   padding: 16px 28px;
   border: 1px solid var(--cor-10);
   border-radius: 50px;
@@ -22,6 +24,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .botao:hover {
   background: var(--cor-10);
   border: 1px solid var(--cor-10);
@@ -29,7 +32,9 @@
 }
 
 .botao-escuro {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0px;
   padding: 16px 28px;
   border: 1px solid var(--cor-10);
   border-radius: 50px;
@@ -42,6 +47,23 @@
   max-width: max-content;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.botao-escuro::after {
+  content: "→";
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-width 0.3s ease,
+    opacity 0.3s ease,
+    margin 0.3s ease;
+}
+
+.botao-escuro:hover::after {
+  max-width: 30px;
+  opacity: 1;
+  margin-left: 8px;
 }
 
 .botao-escuro:hover {
