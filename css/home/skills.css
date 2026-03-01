@@ -116,6 +116,7 @@
     scrollbar-width: none;
     -webkit-mask-image: none;
     mask-image: none;
+    flex-wrap: nowrap;
   }
 
   .carousel::-webkit-scrollbar {
@@ -124,19 +125,20 @@
 
   .group {
     animation-play-state: paused;
-    gap: 10px;
-    padding: 0 0px;
+    flex-wrap: nowrap;
+    padding: 0 20px;
   }
 
   .card {
-    flex-shrink: 0;
-    min-width: 80px;
-    padding: 20px 0px;
+    flex: 0 0 90px;
+    min-width: 90px;
+    height: 100px;
+    padding: 20px 10px;
     pointer-events: all;
   }
 
   .card img {
-    width: 70px;
+    width: 55px;
   }
 
   .bw {
