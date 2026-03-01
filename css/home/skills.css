@@ -126,13 +126,10 @@
     animation-play-state: paused;
   }
 
-  .group:not(:first-child) {
-    display: none;
-  }
-
   .card {
     flex: 0 0 4em;
     padding: 20px 20px;
+    pointer-events: none;
   }
 
   .card img {
