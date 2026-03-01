@@ -1,5 +1,9 @@
+.carousel-wrapper {
+  width: 100%;
+}
+
 .carousel {
-  width: auto;
+  width: 100%;
   display: flex;
   overflow-x: hidden;
   position: relative;
@@ -28,14 +32,18 @@
   animation: spin 15s infinite linear;
   padding-right: 1em;
   will-change: transform;
+  min-width: max-content;
 }
 
 .card {
   flex: 0 0 6em;
   height: 120px;
   padding: 40px 25px;
+  width: 6em;
+  min-width: 6em;
   position: relative;
   pointer-events: none;
+  box-sizing: content-box;
 }
 
 .card img {
@@ -109,24 +117,33 @@
 }
 
 @media (max-width: 800px) {
-  .carousel {
-    padding-top: 20px;
+  .carousel-wrapper {
     overflow-x: auto;
+    overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    width: 100%;
+  }
+
+  .carousel-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel {
+    padding-top: 20px;
+    overflow-x: visible;
+    width: max-content;
     -webkit-mask-image: none;
     mask-image: none;
     flex-wrap: nowrap;
   }
 
-  .carousel::-webkit-scrollbar {
-    display: none;
-  }
-
   .group {
     animation-play-state: paused;
+    flex-shrink: 0;
     flex-wrap: nowrap;
     padding: 0 20px;
+    justify-content: flex-start;
   }
 
   .card {
