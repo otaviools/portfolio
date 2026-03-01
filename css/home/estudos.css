@@ -50,7 +50,7 @@
   width: 12px;
   height: 14px;
   background: url("../../img/icones/seta.svg");
-  transition: 0.3s;
+  transition: transform 0.3s ease-in-out;
 }
 
 .estudos button:hover::after,
@@ -62,28 +62,25 @@
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition:
-    max-height 0.2s ease-in-out,
-    opacity 0.2s ease-in-out;
   padding-left: 20px;
-  padding-top: 0;
   max-width: 100ch;
+  transition:
+    max-height 0.4s ease,
+    opacity 0.6s ease;
+}
+
+.estudos dd > * {
+  overflow: hidden;
 }
 
 .estudos dd.ativa {
-  max-height: 500px;
+  max-height: 200px;
   opacity: 1;
   padding-top: 16px;
 }
 
-.estudos dd {
-  padding-left: 20px;
-  padding-top: 16px;
-  max-width: 100ch;
-}
-
 .estudos a {
-  transition: 0.3s;
+  transition: color 0.3s;
 }
 
 .estudos a:hover {

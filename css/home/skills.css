@@ -99,31 +99,51 @@
   }
 }
 
-@media (max-width: 800px) {
-  .carousel {
-    padding-top: 20px;
-  }
-  .card {
-    flex: 0 0 4em;
-    padding: 20px 20px;
-  }
-  .card img {
-    width: 70px;
-  }
-  .bw {
-    display: none;
-  }
-  .color {
-    opacity: 1;
-  }
-}
-
-/* Ajuste na animação para usar transform (padrão Safari) */
 @keyframes spin {
   from {
     transform: translateX(0);
   }
   to {
     transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 800px) {
+  .carousel {
+    padding-top: 20px;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .group {
+    animation-play-state: paused;
+  }
+
+  .group:not(:first-child) {
+    display: none;
+  }
+
+  .card {
+    flex: 0 0 4em;
+    padding: 20px 20px;
+  }
+
+  .card img {
+    width: 60px;
+  }
+
+  .bw {
+    display: none;
+  }
+
+  .color {
+    opacity: 1;
   }
 }
