@@ -53,3 +53,44 @@ function eventosEstudos(estudo) {
 }
 
 estudos.forEach(eventosEstudos);
+
+//API
+
+document.querySelector(".form").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const botao = document.querySelector(".botao-form");
+  botao.textContent = "Enviando...";
+  botao.disabled = true;
+
+  const dados = {
+    nome: document.getElementById("nome").value,
+    email: document.getElementById("email").value,
+    categoria: document.getElementById("categoria").value,
+    mensagem: document.getElementById("mensagem").value,
+  };
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dados),
+    });
+
+    const resultado = await res.json();
+
+    if (res.ok) {
+      botao.textContent = "Mensagem Enviada ✓";
+      botao.style.backgroundColor = "green";
+      document.querySelector(".form").reset();
+    } else {
+      alert("Erro: " + resultado.error);
+      botao.textContent = "Enviar Mensagem";
+      botao.disabled = false;
+    }
+  } catch (err) {
+    alert("Erro de conexão. Tente novamente.");
+    botao.textContent = "Enviar Mensagem";
+    botao.disabled = false;
+  }
+});
