@@ -80,7 +80,7 @@ document.querySelector(".form").addEventListener("submit", async function (e) {
     const resultado = await res.json();
 
     if (res.ok) {
-      botao.textContent = "Mensagem Enviada ✓";
+      botao.textContent = "Mensagem Enviada";
       botao.style.backgroundColor = "green";
       document.querySelector(".form").reset();
     } else {

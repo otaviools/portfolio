@@ -23,38 +23,57 @@ export default async function handler(req, res) {
   };
 
   try {
-    const response = await fetch("https://api.resend.com/emails", {
+    const responseOwner = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "portfolio <onboarding@resend.dev>",
+        from: "Portfolio <onboarding@resend.dev>",
         to: "otaviools13@gmail.com",
-        subject: `[Portfolio] Nova mensagem de ${nome} — ${categoriaLabel[categoria] || categoria}`,
+        subject: `[Portfolio] Nova mensagem de ${nome}`,
         html: `
-          <h2>Nova mensagem do portfólio</h2>
-          <table>
-            <tr><td><strong>Nome:</strong></td><td>${nome}</td></tr>
-            <tr><td><strong>Email:</strong></td><td>${email}</td></tr>
-            <tr><td><strong>Categoria:</strong></td><td>${categoriaLabel[categoria] || categoria}</td></tr>
-            <tr><td><strong>Mensagem:</strong></td><td>${mensagem}</td></tr>
-          </table>
-          <br/>
-          <p>Responder para: <a href="mailto:${email}">${email}</a></p>
+          <h2>Nova mensagem do Portfólio</h2>
+          <p><strong>Nome:</strong> ${nome}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Categoria:</strong> ${categoriaLabel[categoria] || categoria}</p>
+          <p><strong>Mensagem:</strong> ${mensagem}</p>
         `,
       }),
     });
 
-    if (!response.ok) {
-      const err = await response.json();
+    if (!responseOwner.ok) {
+      const err = await responseOwner.json();
       throw new Error(err.message);
     }
+
+    await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: "Otávio Santos <onboarding@resend.dev>",
+        to: email, // O e-reply vai para quem preencheu o formulário
+        subject: "Recebi sua mensagem!",
+        html: `
+          <div style="font-family: sans-serif; color: #333;">
+            <h2>Olá, ${nome}!</h2>
+            <p>Obrigado por entrar em contato através do meu portfólio.</p>
+            <p>Confirmo que recebi sua mensagem sobre <strong>${categoriaLabel[categoria] || categoria}</strong> e responderei em até 24H !</p>
+            <br/>
+            <hr/>
+            <p>Atenciosamente,<br/><strong>Otávio Santos</strong></p>
+          </div>
+        `,
+      }),
+    });
 
     return res.status(200).json({ success: true });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: "Erro ao enviar email." });
+    return res.status(500).json({ error: "Erro ao processar a solicitação." });
   }
 }
