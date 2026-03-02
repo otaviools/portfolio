@@ -71,7 +71,7 @@ document.querySelector(".form").addEventListener("submit", async function (e) {
   };
 
   try {
-    const res = await fetch("/api/contact", {
+    const res = await fetch("/api/contato", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dados),
