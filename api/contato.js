@@ -21,6 +21,7 @@ module.exports = async function handler(req, res) {
 
   const emailPortfolio = {
     from: process.env.EMAIL_USER,
+    to: "otaviools13@gmail.com",
     subject: `🚀 Novo Contato: ${nome} - ${categoria}`,
     html: `
       <div style="font-family: sans-serif; max-width: 600px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
