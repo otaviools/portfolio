@@ -25,9 +25,11 @@ module.exports = async function handler(req, res) {
     subject: `🚀 Novo Contato: ${nome} - ${categoria}`,
     html: `
       <div style="font-family: sans-serif; max-width: 600px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
-        <div style="background-color: #2c3e50; color: #ffffff; padding: 20px; text-align: center;">
-          <h2 style="margin: 0;">Nova Mensagem do Portfólio</h2>
-        </div>
+      <div style="background-color: #333333; padding: 20px; text-align: center;">
+        <img src="cid:logo_otavio" alt="Logo Otávio Santos" style="width: 100px; height: auto;">
+        <h2 style="margin: 0; color: #fff;">Nova Mensagem do Portfólio</h2>
+      </div>
+      </div>
         
         <div style="padding: 20px; color: #333;">
           <p style="font-size: 16px;">Você recebeu uma nova tentativa de contato através do seu site.</p>
@@ -58,6 +60,13 @@ module.exports = async function handler(req, res) {
         </div>
       </div>
     `,
+    attachments: [
+      {
+        filename: "logo-sombra-preta.svg",
+        path: path.join(__dirname, "img", "icones", "logo-sombra-preta.svg"),
+        cid: "logo_otavio",
+      },
+    ],
   };
 
   const emailCliente = {
@@ -65,21 +74,32 @@ module.exports = async function handler(req, res) {
     to: email,
     subject: "Confirmação de Contato - Portfólio Otávio Santos",
     html: `
-      <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
-        <h2>Olá, ${nome}!</h2>
-        <p>Recebi sua mensagem e responderei em até <strong>24 horas</strong>.</p>
-        
-        <div style="background-color: #f4f4f4; padding: 15px; border-left: 4px solid #007bff; margin: 20px 0;">
-          <strong>Sua mensagem:</strong><br>
-          <em>"${mensagem}"</em>
-        </div>
-        
-        <hr style="border: 0; border-top: 1px solid #eee;">
-        <p>Atenciosamente,<br>
-        <strong>Otávio Santos</strong><br>
-        <small>Desenvolvedor Full Stack</small></p>
+    <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <img src="cid:logo_otavio" alt="Logo Otávio Santos" style="width: 120px; height: auto;">
       </div>
-    `,
+      
+      <h2>Olá, ${nome}!</h2>
+      <p>Recebi sua mensagem e responderei em até <strong>24 horas</strong>.</p>
+      
+      <div style="background-color: #f4f4f4; padding: 15px; border-left: 4px solid #007bff; margin: 20px 0;">
+        <strong>Sua mensagem:</strong><br>
+        <em>"${mensagem}"</em>
+      </div>
+      
+      <hr style="border: 0; border-top: 1px solid #eee;">
+      <p>Atenciosamente,<br>
+      <strong>Otávio Santos</strong><br>
+      <small>Desenvolvedor Full Stack</small></p>
+    </div>
+  `,
+    attachments: [
+      {
+        filename: "logo-sombra-preta.svg",
+        path: path.join(__dirname, "img", "icones", "logo-sombra-preta.svg"),
+        cid: "logo_otavio",
+      },
+    ],
   };
 
   try {

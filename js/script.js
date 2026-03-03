@@ -85,9 +85,17 @@ formulario.addEventListener("submit", async function (e) {
       botao.style.backgroundColor = "green";
       botao.style.color = "white";
       document.querySelector(".form").reset();
+
+      setTimeout(() => {
+        botao.textContent = "Enviar Mensagem";
+        botao.style.backgroundColor = "";
+        botao.style.color = "";
+        botao.disabled = false;
+      }, 3000);
     } else {
       alert("Erro: " + resultado.error);
       botao.textContent = "Enviar Mensagem";
+      botao.style.backgroundColor = "";
       botao.disabled = false;
     }
   } catch (err) {
