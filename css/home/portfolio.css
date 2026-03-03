@@ -1,5 +1,5 @@
 .portfolio-bg {
-  padding-top: 60px;
+  padding-top: 40px;
 }
 
 .portfolio-container {
@@ -156,14 +156,14 @@
 }
 
 .fonte-principal {
-  font-family: "Poppins", sans-serif; /* sua fonte principal */
+  font-family: "Poppins", sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: var(--cor-10);
 }
 
 .fonte-secundaria {
-  font-family: "Roboto", sans-serif; /* sua fonte secundária */
+  font-family: "Roboto", sans-serif;
   font-size: 2rem;
   font-weight: 400;
   color: var(--cor-10);

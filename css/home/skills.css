@@ -117,45 +117,29 @@
 }
 
 @media (max-width: 800px) {
-  .carousel-wrapper {
-    overflow-x: auto;
-    overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    width: 100%;
-  }
-
-  .carousel-wrapper::-webkit-scrollbar {
-    display: none;
-  }
-
   .carousel {
     padding-top: 20px;
-    overflow-x: visible;
-    width: max-content;
     -webkit-mask-image: none;
     mask-image: none;
-    flex-wrap: nowrap;
-  }
-
-  .group {
-    animation-play-state: paused;
-    flex-shrink: 0;
-    flex-wrap: nowrap;
-    padding: 0 20px;
-    justify-content: flex-start;
   }
 
   .card {
-    flex: 0 0 110px;
-    min-width: 110px;
-    height: 110px;
-    padding: 20px 10px;
+    flex: 0 0 120px;
+    min-width: 120px;
+    height: 120px;
+    padding: 10px 10px;
     pointer-events: all;
   }
 
+  .group {
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    padding: 0 10px;
+    justify-content: flex-start;
+  }
+
   .card img {
-    width: 70px;
+    width: 80px;
   }
 
   .bw {

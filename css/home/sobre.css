@@ -10,31 +10,10 @@
   position: relative;
 }
 
-/* .sobre::before {
-  content: "";
-  background: url("../../img/icones/sobre/curso.svg") no-repeat;
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  margin-left: 16px;
-  animation: flutuar 3s ease-in-out infinite;
-} */
-
 .sobre-conteudo {
   padding-top: 20px;
   align-self: center;
 }
-
-/* .sobre-conteudo::before {
-  content: "";
-  background: url("../../img/icones/sobre/periodo.svg") no-repeat;
-  position: absolute;
-  width: 300px;
-  height: 200px;
-  left: 350px;
-  top: 360px;
-  animation: flutuar 3s ease-in-out infinite;
-} */
 
 .sobre h2 {
   margin-bottom: 60px;
@@ -64,7 +43,7 @@
   top: 350px;
   right: -40px;
   isolation: isolate;
-  animation: flutuar 3s ease-in-out infinite 1.5s; /* delay pra não flutuar igual */
+  animation: flutuar 3s ease-in-out infinite 1.5s;
 }
 
 @keyframes flutuar {
@@ -91,6 +70,5 @@
 
   .sobre {
     grid-template-columns: 1fr;
-    margin-bottom: 60px;
   }
 }
