@@ -36,7 +36,7 @@
 
 @media (max-width: 800px) {
   .introducao-bg {
-    padding-top: 140px;
+    padding-top: 160px;
   }
   .introducao {
     grid-template-columns: 1fr;
