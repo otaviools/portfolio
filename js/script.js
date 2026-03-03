@@ -91,7 +91,7 @@ formulario.addEventListener("submit", async function (e) {
         botao.style.backgroundColor = "";
         botao.style.color = "";
         botao.disabled = false;
-      }, 3000);
+      }, 1500);
     } else {
       alert("Erro: " + resultado.error);
       botao.textContent = "Enviar Mensagem";
