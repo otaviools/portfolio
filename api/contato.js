@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+
 const transporte = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -7,7 +8,7 @@ const transporte = nodemailer.createTransport({
   },
 });
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Método não permitido" });
   }
@@ -60,4 +61,4 @@ export default async function handler(req, res) {
       .status(500)
       .json({ error: "Erro ao enviar mensagem. Tente novamente!" });
   }
-}
+};
