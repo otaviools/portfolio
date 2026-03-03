@@ -124,10 +124,10 @@
   }
 
   .card {
-    flex: 0 0 120px;
-    min-width: 120px;
-    height: 120px;
-    padding: 10px 10px;
+    flex: 0 0 115px;
+    min-width: 115px;
+    height: 115px;
+    padding: 10px 4px;
     pointer-events: all;
   }
 
@@ -139,14 +139,14 @@
   }
 
   .card img {
-    width: 80px;
+    width: 75px;
   }
 
   .bw {
-    display: none;
+    opacity: 1;
   }
 
   .color {
-    opacity: 1;
+    display: none;
   }
 }
