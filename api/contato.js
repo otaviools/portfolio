@@ -25,12 +25,12 @@ module.exports = async function handler(req, res) {
     subject: `🚀 Novo Contato: ${nome} - ${categoria}`,
     html: `
       <div style="font-family: sans-serif; max-width: 600px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
-      <div style="background-color: #333333; padding: 20px; text-align: center;">
+      <div style="background-color: #2E2E2E; padding: 20px; text-align: center;">
         <h2 style="margin: 0; color: #fff;">Nova Mensagem do Portfólio</h2>
       </div>
       </div>
         
-        <div style="padding: 20px; color: #333;">
+        <div style="padding: 20px; color: #2E2E2E;">
           <p style="font-size: 16px;">Você recebeu uma nova tentativa de contato através do seu site.</p>
           
           <table style="width: 100%; border-collapse: collapse;">
@@ -54,7 +54,7 @@ module.exports = async function handler(req, res) {
           </div>
         </div>
 
-        <div style="background-color: #f4f4f4; padding: 10px; text-align: center; color: #777; font-size: 12px;">
+        <div style="background-color: #f4f4f4; padding: 10px; text-align: center; color: #9C9C9C; font-size: 12px;">
           Enviado em: ${new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })}
         </div>
       </div>
@@ -66,7 +66,7 @@ module.exports = async function handler(req, res) {
     to: email,
     subject: "Confirmação de Contato - Portfólio Otávio Santos",
     html: `
-      <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
+      <div style="font-family: sans-serif; line-height: 1.6; color: #2E2E2E;">
         <h2>Olá, ${nome}!</h2>
         <p>Recebi sua mensagem e responderei em até <strong>24 horas</strong>.</p>
         

@@ -81,8 +81,9 @@ formulario.addEventListener("submit", async function (e) {
     const resultado = await resposta.json();
 
     if (resposta.ok) {
-      botao.textContent = "Mensagem Enviada";
-      botao.style.backgroundColor = "green";
+      botao.textContent = "Enviado ✓";
+      botao.style.backgroundColor = "#1FC068";
+      botao.style.border = "none";
       botao.style.color = "white";
       document.querySelector(".form").reset();
 
@@ -91,7 +92,7 @@ formulario.addEventListener("submit", async function (e) {
         botao.style.backgroundColor = "";
         botao.style.color = "";
         botao.disabled = false;
-      }, 1500);
+      }, 1000);
     } else {
       alert("Erro: " + resultado.error);
       botao.textContent = "Enviar Mensagem";
