@@ -54,9 +54,10 @@ function eventosEstudos(estudo) {
 
 estudos.forEach(eventosEstudos);
 
-//API
+//API form
 
-document.querySelector(".form").addEventListener("submit", async function (e) {
+const formulario = document.querySelector(".form");
+formulario.addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const botao = document.querySelector(".botao-form");
@@ -71,17 +72,18 @@ document.querySelector(".form").addEventListener("submit", async function (e) {
   };
 
   try {
-    const res = await fetch("/api/contato", {
+    const resposta = await fetch("/api/contato", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dados),
     });
 
-    const resultado = await res.json();
+    const resultado = await resposta.json();
 
-    if (res.ok) {
+    if (resposta.ok) {
       botao.textContent = "Mensagem Enviada";
       botao.style.backgroundColor = "green";
+      botao.style.color = "white";
       document.querySelector(".form").reset();
     } else {
       alert("Erro: " + resultado.error);
