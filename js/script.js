@@ -83,7 +83,9 @@ formulario.addEventListener("submit", async function (e) {
     if (resposta.ok) {
       botao.textContent = "Enviado ✓";
       botao.style.backgroundColor = "#1FC068";
+      botao.style.border = "#1FC068";
       botao.style.color = "white";
+      document.querySelector(".botao-form").reset();
       document.querySelector(".form").reset();
 
       setTimeout(() => {
