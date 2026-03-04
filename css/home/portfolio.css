@@ -35,7 +35,7 @@
     rgba(27, 131, 49, 1)
   );
 }
-.card-left:nth-child(4) .card-cima:hover {
+.card-left:nth-child(3) .card-cima:hover {
   background: linear-gradient(
     to right,
     rgba(43, 247, 106, 0.6),
