@@ -28,7 +28,7 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   cursor: pointer;
   border: none;
   background: none;
@@ -41,7 +41,8 @@
   display: inline-block;
   width: 12px;
   height: 8px;
-  background-color: var(--cor-7);
+  border-radius: 4px;
+  background-color: var(--cor-10);
 }
 
 .estudos button::after {
