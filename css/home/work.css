@@ -49,13 +49,41 @@ p:nth-of-type(1) {
   border-radius: 10px;
   padding: 30px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.16);
-  transition: transform 0.3s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .work-card-1:hover,
 .work-card-2:hover,
 .work-card-3:hover {
   transform: translateY(-5px);
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.24);
+}
+
+.work-card-1 li,
+.work-card-2 li,
+.work-card-3 li {
+  transition: color 0.3s ease-in-out;
+}
+
+.work-card-1:hover li,
+.work-card-2:hover li,
+.work-card-3:hover li {
+  color: var(--cor-12);
+}
+
+.work-card-1 p,
+.work-card-2 p,
+.work-card-3 p {
+  transition: color 0.3s ease-in-out;
+}
+
+.work-card-1:hover p,
+.work-card-2:hover p,
+.work-card-3:hover p {
+  color: var(--cor-12);
 }
 
 .icon-1,
