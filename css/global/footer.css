@@ -1,12 +1,12 @@
 .footer-bg {
-  scroll-margin-top: 60px;
+  scroll-margin-top: 80px;
 }
 
 .footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0px 60px;
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 60px;
 }
 
@@ -75,7 +75,7 @@
   display: flex;
   gap: 40px;
   justify-content: center;
-  padding-top: 50px;
+  padding-top: 120px;
   padding-bottom: 40px;
   background: var(--cor-1);
 }
