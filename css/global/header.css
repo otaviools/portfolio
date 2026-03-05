@@ -158,6 +158,11 @@
 }
 
 @media (max-width: 800px) {
+  .header-bg {
+    background: var(--cor-0);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+
   .header {
     padding: 20px;
   }
