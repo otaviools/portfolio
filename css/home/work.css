@@ -1,5 +1,6 @@
 .work-bg {
   padding-top: 200px;
+  scroll-margin-top: -80px;
 }
 
 .work-container {
@@ -146,6 +147,9 @@ p:nth-of-type(1) {
 }
 
 @media (max-width: 800px) {
+  .work-bg {
+    scroll-margin-top: 80px;
+  }
   .work-container {
     grid-template-columns: 1fr;
   }

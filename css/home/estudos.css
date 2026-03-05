@@ -88,6 +88,9 @@
 }
 
 @media (max-width: 800px) {
+  .estudos-bg {
+    scroll-margin-top: 80px;
+  }
   .estudos {
     padding-top: 60px;
     padding-bottom: 32px;

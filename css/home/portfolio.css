@@ -1,5 +1,6 @@
 .portfolio-bg {
   padding-top: 40px;
+  scroll-margin-top: 80px;
 }
 
 .portfolio-container {
@@ -175,12 +176,14 @@
 }
 
 @media (max-width: 800px) {
+  .portfolio-bg {
+    scroll-margin-top: 80px;
+  }
+
   .portfolio-container {
     grid-template-columns: 1fr;
-    padding-bottom: 0px;
-  }
-  .portfolio-container h2 {
-    padding-bottom: 10px;
+    padding-top: 40px;
+    padding-bottom: 32px;
   }
 }
 

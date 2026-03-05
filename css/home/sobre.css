@@ -59,6 +59,7 @@
 @media (max-width: 1200px) {
   .sobre-bg {
     padding-top: 40px;
+    scroll-margin-top: 80px;
   }
   .sobre-conteudo::before,
   .sobre::before {
