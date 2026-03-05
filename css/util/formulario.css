@@ -30,6 +30,10 @@
   border-radius: 5px;
   width: 100%;
   box-sizing: border-box;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .form input[type="text"]:focus,
@@ -39,7 +43,9 @@
   outline: none;
   border-color: var(--cor-6);
   background: var(--cor-0);
-  box-shadow: 0 0 0 2px var(--cor-2);
+  box-shadow:
+    4px 4px 1px var(--cor-10),
+    4px 4px 1px 1px rgba(0, 0, 0, 1);
 }
 
 @media (max-width: 800px) {

@@ -35,6 +35,7 @@ p:nth-of-type(1) {
   display: flex;
   gap: 5px;
   margin-bottom: 10px;
+  align-items: flex-start;
 }
 
 .work-container ul {
@@ -61,8 +62,10 @@ p:nth-of-type(1) {
 .icon-2,
 .icon-3 {
   background-color: var(--cor-3);
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  box-shadow:
+    8px 8px 1px var(--cor-10),
+    8px 8px 1px 1px rgba(0, 0, 0, 1);
+  border-radius: 12px;
   padding: 12px;
   display: inline-flex;
   align-items: center;
@@ -85,14 +88,41 @@ p:nth-of-type(1) {
   transition: 200ms;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
   .work-bg {
     padding-top: 40px;
   }
+
+  .work-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .work h2 {
+    margin-bottom: 40px;
+  }
+
+  .work-card-3 {
+    grid-column: 1 / -1;
+  }
+
+  .work-container h3 {
+    max-width: 1000px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+
+  .work-container p:nth-of-type(2) {
+    max-width: 500px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 800px) {
   .work-container {
     grid-template-columns: 1fr;
   }
-  .work h2 {
-    margin-bottom: 40px;
+
+  .work-card-3 {
+    grid-column: auto;
   }
 }
