@@ -8,11 +8,14 @@
   <title>Otávio - FullStack Developer</title>
   <link rel="icon" href="./img/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
   <link rel="icon" href="./img/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="./css/style.min.css">
   <link rel="preload" href="./fonts/Satoshi/Satoshi-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="./fonts/Satoshi/Satoshi-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="./fonts/Satoshi/Satoshi-Medium.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" href="./img/icones/logo-sombra-preta.svg" fetchpriority="high">
+  <link rel="preload" href="./css/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="./css/style.min.css">
+  </noscript>
 </head>
 
 <body id="home">
