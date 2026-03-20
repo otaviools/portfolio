@@ -34,7 +34,6 @@ window.addEventListener(
 );
 
 //Script Animação Suave
-
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -43,11 +42,10 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 });
-
-//Section Estudos
-
 const hiddenElements = document.querySelectorAll(".hidden");
 hiddenElements.forEach((el) => observer.observe(el));
+
+//Section Estudos
 
 const estudos = document.querySelectorAll(".estudos button");
 
