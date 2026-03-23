@@ -156,7 +156,10 @@
   opacity: 0;
   pointer-events: none;
   transform: translateX(100%);
-  transition: all 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .sideBar.active {
@@ -201,7 +204,9 @@
   .header-bg {
     background: var(--cor-1);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
   }
+
   .header {
     padding: 20px;
   }
