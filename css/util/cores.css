@@ -10,9 +10,45 @@
   --cor-8: #595959;
   --cor-9: #404040;
   --cor-10: #2e2e2e;
+  --cor-105: #1a1a1a;
   --cor-11: #111111;
   --cor-12: #000000;
   --card-cima-bg: var(--cor-10);
+}
+
+[data-theme="dark"] {
+  --card-cima-bg: var(--cor-105);
+  --cor-0: #1a1a1a;
+  --cor-1: #111111;
+  --cor-2: #222222;
+  --cor-3: #2e2e2e;
+  --cor-4: #404040;
+  --cor-5: #595959;
+  --cor-6: #717171;
+  --cor-7: #9c9c9c;
+  --cor-8: #b2b2b2;
+  --cor-9: #cccccc;
+  --cor-10: #dedede;
+  --cor-11: #ededed;
+  --cor-12: #ffffff;
+}
+
+body,
+header,
+.header-bg,
+.sideBar,
+.btn-tema,
+.card,
+a,
+p,
+h1,
+h2,
+h3,
+h4 {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .cor-0 {

@@ -1,5 +1,42 @@
-//Script SideBar Mobile
+//Script Botao Tema
+const btnTema = document.querySelector(".btn-tema");
+const imgTema = btnTema.querySelector("img");
 
+const temaSalvo =
+  localStorage.getItem("tema") ||
+  (window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light");
+aplicarTema(temaSalvo);
+
+btnTema.addEventListener("click", () => {
+  const atual = document.documentElement.getAttribute("data-theme");
+  aplicarTema(atual === "dark" ? "light" : "dark");
+});
+
+function aplicarTema(tema) {
+  document.documentElement.setAttribute("data-theme", tema);
+  localStorage.setItem("tema", tema);
+
+  document.querySelector('link[rel="icon"]').href =
+    tema === "dark" ? "./img/favicon-dark.svg" : "./img/favicon-light.svg";
+
+  document.querySelector(".logo img").src =
+    tema === "dark"
+      ? "./img/icones/logo-branca.svg"
+      : "./img/icones/logo-sombra-preta.svg";
+
+  imgTema.style.opacity = "0";
+  imgTema.style.transform = "rotate(90deg) scale(0.5)";
+  setTimeout(() => {
+    imgTema.src =
+      tema === "dark" ? "./img/icones/sun.svg" : "./img/icones/moon.svg";
+    imgTema.style.opacity = "1";
+    imgTema.style.transform = "rotate(0deg) scale(1)";
+  }, 150);
+}
+
+//Script SideBar Mobile
 const sidebar = document.querySelector(".sideBar");
 const menuOpen = document.querySelector(".icon-menu-open");
 const menuClose = document.querySelector(".icon-menu-close");
@@ -46,7 +83,6 @@ const hiddenElements = document.querySelectorAll(".hidden");
 hiddenElements.forEach((el) => observer.observe(el));
 
 //Section Estudos
-
 const estudos = document.querySelectorAll(".estudos button");
 
 function ativarEstudo(event) {
@@ -62,7 +98,6 @@ function ativarEstudo(event) {
 estudos.forEach((estudo) => estudo.addEventListener("click", ativarEstudo));
 
 //API form
-
 async function enviarFormulario(dados) {
   const resposta = await fetch("/api/contato", {
     method: "POST",

@@ -21,7 +21,7 @@
 }
 
 .card-cima {
-  background-color: var(--cor-10);
+  background-color: var(--card-cima-bg);
   padding: 40px;
   border-radius: 20px 20px 0px 0px;
   align-items: center;
@@ -93,7 +93,7 @@
 }
 
 .card-cima:hover p {
-  color: var(--cor-0);
+  color: var(--cor-12);
 }
 
 .card-baixo {
