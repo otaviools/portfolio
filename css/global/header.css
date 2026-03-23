@@ -27,16 +27,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  -webkit-tap-highlight-color: transparent;
   transition:
     background-color 0.2s ease,
     box-shadow 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease,
+    filter 0.2s ease;
 }
 
-.btn-tema:hover {
-  background: var(--cor-11);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
-  transform: scale(1.08);
+@media (hover: hover) {
+  .btn-tema:hover {
+    filter: brightness(0.9);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+    transform: scale(1.08);
+  }
+}
+
+.btn-tema:active {
+  filter: brightness(0.85);
+  transform: scale(0.95);
 }
 
 .btn-tema img {
