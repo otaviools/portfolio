@@ -1,12 +1,17 @@
 //Script Botao Tema
 const btnTema = document.querySelector(".btn-tema");
 const imgTema = btnTema.querySelector("img");
+const isMobile = window.matchMedia("(max-width: 800px)").matches;
 
-const temaSalvo =
-  localStorage.getItem("tema") ||
-  (window.matchMedia("(prefers-color-scheme: dark)").matches
+const temaSalvo = isMobile
+  ? window.matchMedia("(prefers-color-scheme: dark)").matches
     ? "dark"
-    : "light");
+    : "light"
+  : localStorage.getItem("tema") ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+
 aplicarTema(temaSalvo);
 
 btnTema.addEventListener("click", () => {
@@ -16,7 +21,10 @@ btnTema.addEventListener("click", () => {
 
 function aplicarTema(tema) {
   document.documentElement.setAttribute("data-theme", tema);
-  localStorage.setItem("tema", tema);
+
+  if (!isMobile) {
+    localStorage.setItem("tema", tema);
+  }
 
   document.querySelector('link[rel="icon"]').href =
     tema === "dark" ? "./img/favicon-dark.svg" : "./img/favicon-light.svg";
