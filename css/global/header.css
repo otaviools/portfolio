@@ -144,7 +144,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  height: 100vh;
+  height: 100dvh;
   width: 200px;
   z-index: 999;
   background: var(--cor-0);
