@@ -29,28 +29,36 @@
   transition: all 0.3s ease-in-out;
 }
 
-.card-cima:hover {
+.card-left:nth-child(1) .card-cima:hover {
+  background: linear-gradient(
+    to left,
+    rgba(48, 165, 233, 0.8),
+    rgb(233, 235, 255)
+  );
+}
+
+.card-left:nth-child(3) .card-cima:hover {
   background: linear-gradient(
     to left,
     rgba(48, 233, 88, 0.8),
     rgba(27, 131, 49, 1)
   );
 }
-.card-left:nth-child(3) .card-cima:hover {
+.card-left:nth-child(5) .card-cima:hover {
   background: linear-gradient(
     to right,
     rgba(43, 247, 106, 0.6),
     rgba(22, 150, 102, 0.9)
   );
 }
-.card-left:nth-child(5) .card-cima:hover {
+.card-left:nth-child(7) .card-cima:hover {
   background: linear-gradient(
     to left,
     rgba(177, 101, 251, 0.8),
     rgba(72, 10, 158, 1)
   );
 }
-.card-left:nth-child(6) .card-cima:hover {
+.card-left:nth-child(8) .card-cima:hover {
   background: linear-gradient(
     to left,
     rgba(108, 110, 249, 0.8),
@@ -63,6 +71,7 @@
   grid-template-columns: 1fr auto;
   align-items: center;
   cursor: pointer;
+  color: var(--cor-5);
 }
 
 .card-cima p::after {
@@ -184,6 +193,44 @@
     grid-template-columns: 1fr;
     padding-top: 40px;
     padding-bottom: 32px;
+  }
+  .card-left:nth-child(1) .card-cima {
+    background: linear-gradient(
+      to left,
+      rgba(19, 92, 228, 0.5),
+      rgb(233, 235, 255)
+    );
+  }
+  .card-left:nth-child(3) .card-cima {
+    background: linear-gradient(
+      to left,
+      rgba(48, 233, 88, 0.8),
+      rgba(27, 131, 49, 1)
+    );
+  }
+  .card-left:nth-child(5) .card-cima {
+    background: linear-gradient(
+      to right,
+      rgba(22, 150, 102, 0.4),
+      rgba(43, 247, 106, 0.6)
+    );
+  }
+  .card-left:nth-child(7) .card-cima {
+    background: linear-gradient(
+      to left,
+      rgba(177, 101, 251, 0.8),
+      rgba(72, 10, 158, 1)
+    );
+  }
+  .card-left:nth-child(8) .card-cima {
+    background: linear-gradient(
+      to left,
+      rgba(108, 110, 249, 0.8),
+      rgba(56, 59, 255, 1)
+    );
+  }
+  .card-cima p {
+    color: var(--cor-12);
   }
 }
 
