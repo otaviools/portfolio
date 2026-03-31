@@ -219,7 +219,7 @@
     background: linear-gradient(
       to left,
       rgba(177, 101, 251, 0.8),
-      rgba(72, 10, 158, 1)
+      rgba(72, 10, 158, 0.8)
     );
   }
   .card-left:nth-child(8) .card-cima {
@@ -230,7 +230,7 @@
     );
   }
   .card-cima p {
-    color: var(--cor-12);
+    color: var(--cor-0);
   }
 }
 
