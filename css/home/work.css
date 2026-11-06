@@ -1,160 +1,139 @@
 .work-bg {
-  padding-top: 200px;
-  scroll-margin-top: -40px;
+  --respiro: 160px;
+  padding-top: var(--respiro);
+  scroll-margin-top: calc(var(--ancora) - var(--respiro));
 }
 
-.work-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.work h2 {
+.work-titulo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   margin-bottom: 60px;
 }
 
-.work-container h3 {
-  max-width: 248px;
-  margin-top: 40px;
-  margin-bottom: 10px;
+.work-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  padding: 60px 0px;
+  border-top: 1px solid var(--linha);
 }
 
-.work-container p:nth-of-type(2) {
-  max-width: 277px;
-  margin-bottom: 20px;
+.work-item:last-child {
+  border-bottom: 1px solid var(--linha);
 }
 
-.work-card-1,
-.work-card-2,
-.work-card-3,
-p:nth-of-type(1) {
-  margin-bottom: 20px;
+.work-numero {
+  font:
+    300 12rem/0.8 "Satoshi",
+    sans-serif;
+  letter-spacing: -0.06em;
+  transition: transform 0.6s ease;
 }
 
-.work-container li {
+.work-item:hover .work-numero {
+  transform: translateX(16px);
+}
+
+.work-info {
   display: flex;
-  gap: 5px;
-  margin-bottom: 10px;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.work-container ul {
-  margin-bottom: 24px;
+.work-info h3 {
+  margin-bottom: 4px;
 }
 
-.work-card-1,
-.work-card-2,
-.work-card-3 {
-  background-color: var(--cor-0);
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.16);
-  transition:
-    transform 0.3s ease-in-out,
-    box-shadow 0.3s ease-in-out;
-  cursor: pointer;
+.work-descricao {
+  max-width: 560px;
 }
 
-.work-card-1:hover,
-.work-card-2:hover,
-.work-card-3:hover {
-  transform: translateY(-5px);
-  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.24);
+.work-lista {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 32px;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--linha);
 }
 
-.work-card-1 li,
-.work-card-2 li,
-.work-card-3 li {
-  transition: color 0.3s ease-in-out;
+.work-lista li {
+  display: flex;
+  gap: 10px;
 }
 
-.work-card-1:hover li,
-.work-card-2:hover li,
-.work-card-3:hover li {
+.work-lista li::before {
+  content: "*";
+  font-family: var(--fonte-mono);
   color: var(--cor-12);
 }
 
-.work-card-1 p,
-.work-card-2 p,
-.work-card-3 p {
-  transition: color 0.3s ease-in-out;
-}
-
-.work-card-1:hover p,
-.work-card-2:hover p,
-.work-card-3:hover p {
-  color: var(--cor-12);
-}
-
-.icon-1,
-.icon-2,
-.icon-3 {
-  background-color: var(--cor-3);
-  box-shadow:
-    8px 8px 1px var(--cor-10),
-    8px 8px 1px 1px rgba(0, 0, 0, 1);
-  border-radius: 12px;
-  padding: 12px;
-  display: inline-flex;
+.work-cta {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease 0.1s;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 40px;
 }
 
-.work-card-1:hover .icon-1,
-.work-card-2:hover .icon-2,
-.work-card-3:hover .icon-3 {
-  transform: scale(1.2) rotate(1deg);
+@supports (animation-timeline: view()) {
+  .work-numero {
+    animation: paralaxe linear both;
+    animation-timeline: view();
+  }
+
+  @keyframes paralaxe {
+    from {
+      translate: 0px 60px;
+    }
+    to {
+      translate: 0px -60px;
+    }
+  }
 }
-.work-card-1 {
-  transition: 600ms;
-}
-.work-card-2 {
-  transition: 400ms;
-}
-.work-card-3 {
-  transition: 200ms;
+
+@media (prefers-reduced-motion) {
+  .work-numero {
+    animation: none;
+  }
 }
 
 @media (max-width: 1200px) {
   .work-bg {
-    padding-top: 40px;
+    --respiro: 100px;
   }
 
-  .work-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .work h2 {
-    margin-bottom: 40px;
-  }
-
-  .work-card-3 {
-    grid-column: 1 / -1;
-  }
-
-  .work-container h3 {
-    max-width: 1000px;
-    margin-top: 40px;
-    margin-bottom: 10px;
-  }
-
-  .work-container p:nth-of-type(2) {
-    max-width: 500px;
-    margin-bottom: 20px;
+  .work-numero {
+    font-size: 9rem;
   }
 }
 
 @media (max-width: 800px) {
   .work-bg {
-    scroll-margin-top: 80px;
-  }
-  .work-container {
-    grid-template-columns: 1fr;
+    --respiro: 60px;
   }
 
-  .work-card-3 {
-    grid-column: auto;
+  .work-titulo {
+    margin-bottom: 40px;
+  }
+
+  .work-item {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 40px 0px;
+  }
+
+  .work-numero {
+    font-size: 6rem;
+  }
+
+  .work-item:hover .work-numero {
+    transform: none;
+  }
+
+  .work-lista {
+    grid-template-columns: 1fr;
   }
 }

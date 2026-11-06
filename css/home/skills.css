@@ -1,109 +1,65 @@
 .carousel-wrapper {
   width: 100%;
+  border-top: 1px solid var(--linha);
+  border-bottom: 1px solid var(--linha);
 }
 
 .carousel {
   width: 100%;
   display: flex;
-  overflow-x: hidden;
-  position: relative;
+  overflow: hidden;
+  padding: 28px 0px;
   -webkit-mask-image: linear-gradient(
     to right,
     transparent,
-    black 15%,
-    black 85%,
+    black 10%,
+    black 90%,
     transparent
   );
   mask-image: linear-gradient(
     to right,
     transparent,
-    black 15%,
-    black 85%,
+    black 10%,
+    black 90%,
     transparent
   );
-  z-index: 0;
 }
 
 .group {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-shrink: 0;
-  animation: spin 15s infinite linear;
-  padding-right: 1em;
-  will-change: transform;
   min-width: max-content;
+  animation: spin 40s infinite linear;
+  will-change: transform;
 }
 
-.card {
-  flex: 0 0 6em;
-  height: 120px;
-  padding: 40px 25px;
-  width: 6em;
-  min-width: 6em;
-  position: relative;
-  pointer-events: none;
-  box-sizing: content-box;
+.group li {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  transition: color 0.3s ease;
 }
 
-.card img {
-  width: 80px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  will-change: transform, opacity;
-}
-
-.bw {
-  opacity: 1;
-}
-.color {
-  opacity: 0;
+.group li::after {
+  content: "*";
+  font-family: var(--fonte-mono);
+  font-size: 0.6em;
+  color: var(--cor-6);
+  margin: 0px 40px;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .card {
-    pointer-events: all;
+  .carousel:hover .group {
+    animation-play-state: paused;
   }
 
-  .card img {
-    transition:
-      transform 0.3s ease,
-      opacity 0.3s ease;
+  .carousel:hover li {
+    color: var(--cor-6);
   }
 
-  .card::after {
-    content: attr(data-name);
-    font-family: "Satoshi";
-    font-weight: 600;
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--cor-10);
-    color: var(--cor-0);
-    padding: 4px 8px;
-    border-radius: 5px;
-    font-size: 1rem;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
-  }
-
-  .card:hover::after {
-    opacity: 1;
-  }
-  .card:hover .bw {
-    opacity: 0;
-  }
-  .card:hover .color {
-    opacity: 1;
-  }
-
-  .card:hover img {
-    transform: translate(-50%, calc(-50% - 8px)) scale(1.15);
+  .carousel li:hover {
+    color: var(--cor-12);
   }
 }
 
@@ -116,37 +72,24 @@
   }
 }
 
+@media (prefers-reduced-motion) {
+  .group {
+    animation: none;
+  }
+}
+
 @media (max-width: 800px) {
   .carousel {
-    padding-top: 20px;
+    padding: 20px 0px;
     -webkit-mask-image: none;
     mask-image: none;
   }
 
-  .card {
-    flex: 0 0 115px;
-    min-width: 115px;
-    height: 115px;
-    padding: 10px 4px;
-    pointer-events: all;
-  }
-
   .group {
-    flex-shrink: 0;
-    flex-wrap: nowrap;
-    padding: 0 10px;
-    justify-content: flex-start;
+    animation-duration: 30s;
   }
 
-  .card img {
-    width: 75px;
-  }
-
-  .bw {
-    opacity: 1;
-  }
-
-  .color {
-    display: none;
+  .group li::after {
+    margin: 0px 24px;
   }
 }

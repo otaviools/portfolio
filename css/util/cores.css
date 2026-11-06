@@ -13,13 +13,24 @@
   --cor-105: #1a1a1a;
   --cor-11: #111111;
   --cor-12: #000000;
-  --card-cima-bg: var(--cor-10);
+  --card-cima-bg: var(--cor-11);
+  --card-cima-texto: var(--cor-5);
+  --linha: var(--cor-3);
+  --ancora: 112px;
+  --fonte-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+}
+
+@media (max-width: 800px) {
+  :root {
+    --ancora: 96px;
+  }
 }
 
 [data-theme="dark"] {
   --card-cima-bg: var(--cor-105);
-  --cor-0: #1a1a1a;
-  --cor-1: #111111;
+  --card-cima-texto: var(--cor-7);
+  --cor-0: #141414;
+  --cor-1: #0a0a0a;
   --cor-2: #222222;
   --cor-3: #2e2e2e;
   --cor-4: #404040;

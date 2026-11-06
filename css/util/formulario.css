@@ -1,62 +1,127 @@
 .form {
+  margin: 0px;
+}
+
+.form-campos {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 24px;
 }
 
 .form label {
   display: block;
   font:
-    600 1rem/1.5 "Satoshi",
-    sans-serif;
+    400 0.75rem/1.5 var(--fonte-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   margin-bottom: 4px;
-}
-
-.form .col-2 {
-  grid-column: span 2;
 }
 
 .form input[type="text"],
 .form input[type="email"],
-.form textarea,
-.form select {
+.form textarea {
   font:
-    400 1rem/1.5 "Roboto",
+    500 1.5rem/1.4 "Satoshi",
     sans-serif;
-  background: var(--cor-2);
+  letter-spacing: -0.02em;
+  background: transparent;
   color: var(--cor-12);
-  border: 1px solid var(--cor-2);
-  padding: 12px;
-  border-radius: 5px;
+  border: none;
+  border-bottom: 1px solid var(--linha);
+  padding: 10px 0px;
+  border-radius: 0px;
   width: 100%;
   box-sizing: border-box;
-  transition:
-    border-color 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: border-color 0.3s ease;
+}
+
+.form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form ::placeholder {
+  color: var(--cor-5);
+}
+
+.form input[type="text"]:hover,
+.form input[type="email"]:hover,
+.form textarea:hover {
+  border-bottom-color: var(--cor-7);
 }
 
 .form input[type="text"]:focus,
 .form input[type="email"]:focus,
-.form textarea:focus,
-.form select:focus {
+.form textarea:focus {
   outline: none;
-  border-color: var(--cor-6);
-  background: var(--cor-0);
-  box-shadow:
-    4px 4px 1px var(--cor-10),
-    4px 4px 1px 1px rgba(0, 0, 0, 1);
+  border-bottom-color: var(--cor-12);
+}
+
+/*Assunto em botões*/
+
+.assuntos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.form .assunto {
+  position: relative;
+  display: inline-block;
+  margin: 0px;
+  cursor: pointer;
+}
+
+.assunto input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.assunto span {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 1px solid var(--linha);
+  font:
+    500 1rem/1.4 "Satoshi",
+    sans-serif;
+  text-transform: none;
+  letter-spacing: 0px;
+  color: var(--cor-9);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.assunto:hover span {
+  border-color: var(--cor-12);
+  color: var(--cor-12);
+}
+
+.assunto input:checked + span {
+  background: var(--cor-12);
+  border-color: var(--cor-12);
+  color: var(--cor-0);
+}
+
+.assunto input:focus-visible + span {
+  outline: 2px solid var(--cor-12);
+  outline-offset: 2px;
 }
 
 @media (max-width: 800px) {
-  .contato-formulario {
-    grid-template-columns: 1fr;
-    padding-top: 10px;
-  }
-  .form {
+  .form-campos {
     grid-template-columns: 1fr;
   }
-  .form .col-2 {
-    grid-column: 1;
+
+  .form input[type="text"],
+  .form input[type="email"],
+  .form textarea {
+    font-size: 1.25rem;
+  }
+
+  .contato-linha > span:empty {
+    display: none;
   }
 }

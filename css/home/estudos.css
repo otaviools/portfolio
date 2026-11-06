@@ -1,104 +1,193 @@
+.estudos-bg {
+  --respiro: 120px;
+  scroll-margin-top: calc(var(--ancora) - var(--respiro));
+}
+
 .estudos {
-  padding-top: 120px;
+  padding-top: var(--respiro);
   padding-bottom: 60px;
 }
 
-.estudos h2 {
+.estudos-titulo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   margin-bottom: 60px;
 }
 
-.estudos dl > div {
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
-  background-color: var(--cor-0);
-  margin-bottom: 20px;
-  transition: transform 0.3s ease-in-out;
+.estudos-titulo-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
 }
 
-.estudos dl > div:hover {
-  transform: scale(1) translateY(-4px);
+.estudos-total {
+  font-variant-numeric: tabular-nums;
 }
 
-.estudos dl > div:nth-child(odd) {
-  background-color: var(--cor-2);
-}
+/*Tabela*/
 
-.estudos button {
+.estudos-cabecalho,
+.estudos-item {
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 12px;
+  grid-template-columns: 64px 1fr 140px 110px 110px 24px;
+  gap: 24px;
+}
+
+.estudos-cabecalho {
+  padding-bottom: 12px;
+}
+
+.estudos-lista {
+  counter-reset: estudo;
+}
+
+.estudos-lista li {
+  counter-increment: estudo;
+  border-top: 1px solid var(--linha);
+}
+
+.estudos-lista li:last-child {
+  border-bottom: 1px solid var(--linha);
+}
+
+.estudos-item {
+  position: relative;
+  isolation: isolate;
+  align-items: baseline;
+  padding: 22px 0px;
+}
+
+.estudos-numero::before {
+  content: "Nº" counter(estudo, decimal-leading-zero);
+  letter-spacing: 0.05em;
+}
+
+.estudos-nome {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 12px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.estudos-selo {
+  padding: 2px 8px;
+  border: 1px solid var(--linha);
+  white-space: nowrap;
+}
+
+.estudos-ano {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.estudos-icone {
+  justify-self: end;
+  font:
+    300 1.25rem/1 "Satoshi",
+    sans-serif;
+  color: var(--cor-12);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/*Linha com link*/
+
+.estudos-link {
   cursor: pointer;
-  border: none;
-  background: none;
-  width: 100%;
-  text-align: left;
 }
 
-.estudos button::before {
+.estudos-link::before {
   content: "";
-  display: inline-block;
-  width: 12px;
-  height: 8px;
-  border-radius: 4px;
-  background-color: var(--cor-10);
+  position: absolute;
+  inset: 0px -12px;
+  z-index: -1;
+  background: var(--cor-2);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.estudos button::after {
-  content: "";
-  display: inline-block;
-  width: 12px;
-  height: 14px;
-  background: url("../../img/icones/seta.svg");
-  transition: transform 0.3s ease-in-out;
+.estudos-link:hover::before,
+.estudos-link:focus-visible::before {
+  transform: scaleY(1);
 }
 
-.estudos button[aria-expanded="true"]::after {
-  transform: rotate(180deg);
+.estudos-link:hover .estudos-nome {
+  transform: translateX(8px);
 }
 
-.estudos dd {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  padding-left: 20px;
-  padding-top: 0;
-  max-width: 100ch;
-  transition:
-    max-height 0.35s cubic-bezier(0, 1, 0, 1),
-    opacity 0.25s ease,
-    padding-top 0.3s ease;
+.estudos-link:hover .estudos-icone {
+  transform: translate(3px, -3px);
 }
 
-.estudos dd.ativa {
-  max-height: 300px;
-  opacity: 1;
-  padding-top: 16px;
-  transition:
-    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.3s ease 0.05s,
-    padding-top 0.3s ease;
-}
+@media (max-width: 1000px) {
+  .estudos-cabecalho,
+  .estudos-item {
+    grid-template-columns: 64px 1fr 110px 90px 24px;
+  }
 
-.estudos a {
-  transition: color 0.3s;
-}
-
-.estudos a:hover {
-  color: var(--cor-6);
+  .estudos-cabecalho span:nth-child(4),
+  .estudos-tipo {
+    display: none;
+  }
 }
 
 @media (max-width: 800px) {
   .estudos-bg {
-    scroll-margin-top: 80px;
+    --respiro: 60px;
   }
+
   .estudos {
-    padding-top: 60px;
     padding-bottom: 32px;
   }
 
-  .estudos h2 {
+  .estudos-titulo {
     margin-bottom: 40px;
+  }
+
+  .estudos-cabecalho {
+    display: none;
+  }
+
+  .estudos-item {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "numero ano"
+      "nome icone"
+      "inst inst";
+    gap: 8px 16px;
+    padding: 20px 0px;
+  }
+
+  .estudos-numero {
+    grid-area: numero;
+  }
+
+  .estudos-ano {
+    grid-area: ano;
+    text-align: right;
+  }
+
+  .estudos-nome {
+    grid-area: nome;
+  }
+
+  .estudos-icone {
+    grid-area: icone;
+    align-self: center;
+  }
+
+  .estudos-inst {
+    grid-area: inst;
+  }
+
+  .estudos-link:hover .estudos-nome {
+    transform: none;
+  }
+
+  .estudos-link::before {
+    inset: 0px;
   }
 }
