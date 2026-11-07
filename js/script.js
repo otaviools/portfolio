@@ -215,29 +215,6 @@ function ativarFicha(event) {
 
 fichas.forEach((botao) => botao.addEventListener("click", ativarFicha));
 
-//Section Portfólio - Preview
-const projetos = document.querySelectorAll(".projeto");
-const temCursor = window.matchMedia("(hover: hover) and (pointer: fine)");
-let quadro = null;
-
-function moverPreview(event) {
-  const projeto = event.currentTarget;
-  const { clientX, clientY } = event;
-
-  if (quadro) cancelAnimationFrame(quadro);
-  quadro = requestAnimationFrame(() => {
-    const area = projeto.getBoundingClientRect();
-    projeto.style.setProperty("--x", clientX - area.left + "px");
-    projeto.style.setProperty("--y", clientY - area.top + "px");
-  });
-}
-
-if (temCursor.matches) {
-  projetos.forEach((projeto) =>
-    projeto.addEventListener("mousemove", moverPreview),
-  );
-}
-
 //Section Portfólio - GitHub (repositórios com o tópico "portfolio")
 const listaProjetos = document.querySelector(".portfolio-container");
 
@@ -254,6 +231,7 @@ function normalizarUrl(url) {
 
 function projetoJaExiste(projeto) {
   if (document.querySelector(".projeto-" + projeto.slug)) return true;
+  if (document.querySelector(`.projeto[data-repo="${projeto.slug}"]`)) return true;
 
   const links = [...document.querySelectorAll(".projeto-nome a")].map((a) =>
     normalizarUrl(a.href),
@@ -272,14 +250,114 @@ function criarLink(classe, texto, url) {
   return link;
 }
 
-function criarFaixaCores(cores) {
-  const faixa = criar("div", "cor-faixa");
-  cores.forEach((cor) => {
-    const bloco = criar("span");
-    bloco.style.backgroundColor = cor;
-    faixa.appendChild(bloco);
+// Identidade visual: paleta, tipografia e componentes reais do projeto
+const FONTES_DO_SITE = ["Satoshi"];
+const fontesCarregadas = new Set(FONTES_DO_SITE);
+
+function carregarFonte(nome, pesos) {
+  if (fontesCarregadas.has(nome)) return;
+  fontesCarregadas.add(nome);
+
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href =
+    "https://fonts.googleapis.com/css2?family=" +
+    encodeURIComponent(nome).replace(/%20/g, "+") +
+    ":wght@" +
+    pesos.join(";") +
+    "&display=swap";
+  document.head.appendChild(link);
+}
+
+function textoSobre(hex) {
+  const valor = parseInt(hex.slice(1), 16);
+  const r = (valor >> 16) & 255;
+  const g = (valor >> 8) & 255;
+  const b = valor & 255;
+  return (0.299 * r + 0.587 * g + 0.114 * b) / 255 > 0.6 ? "#111111" : "#ffffff";
+}
+
+async function copiarTexto(texto) {
+  try {
+    await navigator.clipboard.writeText(texto);
+    return true;
+  } catch (erro) {
+    const campo = document.createElement("textarea");
+    campo.value = texto;
+    document.body.appendChild(campo);
+    campo.select();
+    const copiou = document.execCommand("copy");
+    campo.remove();
+    return copiou;
+  }
+}
+
+function criarCor(hex) {
+  const codigo = hex.toUpperCase();
+  const cor = criar("button", "identidade-cor font-3-xs", codigo);
+  cor.type = "button";
+  cor.style.backgroundColor = hex;
+  cor.style.color = textoSobre(hex);
+  cor.setAttribute("aria-label", "Copiar cor " + codigo);
+
+  cor.addEventListener("click", async () => {
+    const copiou = await copiarTexto(codigo);
+    cor.textContent = copiou ? "Copiado ✓" : codigo;
+    setTimeout(() => (cor.textContent = codigo), 1500);
   });
-  return faixa;
+  return cor;
+}
+
+function criarLinhaFicha(rotulo, conteudo) {
+  const linha = criar("div", "ficha-linha");
+  linha.append(criar("p", "ficha-rotulo font-3-xs cor-8", rotulo), conteudo);
+  return linha;
+}
+
+function criarIdentidade(identidade) {
+  if (!identidade) return null;
+  const { principal, secundaria } = identidade.cores;
+  const cores = [...principal, ...secundaria];
+  if (!cores.length && !identidade.fontes.length) return null;
+
+  const pesos = identidade.pesos.length ? identidade.pesos : [400, 700];
+  identidade.fontes.forEach((fonte) => carregarFonte(fonte, pesos));
+
+  const bloco = criar("div", "identidade");
+
+  if (cores.length) {
+    const paleta = criar("div", "identidade-paleta");
+    cores.forEach((hex) => paleta.appendChild(criarCor(hex)));
+    bloco.appendChild(criarLinhaFicha("(Cores)", paleta));
+  }
+
+  if (identidade.fontes.length) {
+    const fontes = criar("div", "identidade-fontes");
+    identidade.fontes.forEach((fonte) => {
+      const item = criar("div", "identidade-fonte");
+      const amostra = criar("span", "identidade-aa", "Aa");
+      amostra.style.fontFamily = `"${fonte}", sans-serif`;
+      item.append(
+        amostra,
+        criar("p", "font-1-s cor-12", fonte),
+        criar("p", "font-3-xs cor-8", pesos.join(" · ")),
+      );
+      fontes.appendChild(item);
+    });
+    bloco.appendChild(criarLinhaFicha("(Tipografia)", fontes));
+  }
+
+  return bloco;
+}
+
+function aplicarIdentidade(ficha, identidade) {
+  const bloco = criarIdentidade(identidade);
+  if (!bloco) return;
+
+  const conteudo = ficha.querySelector(".projeto-ficha-conteudo");
+  const antigo = conteudo.querySelector(".card-right, .identidade");
+  if (antigo) antigo.replaceWith(bloco);
+  else conteudo.appendChild(bloco);
 }
 
 function criarFicha(projeto) {
@@ -301,34 +379,9 @@ function criarFicha(projeto) {
   verProjeto.appendChild(criar("span", "", "↗"));
   texto.appendChild(verProjeto);
   conteudo.appendChild(texto);
-
-  const { principal, secundaria } = projeto.cores;
-  if (principal.length || secundaria.length || projeto.fontes.length) {
-    const cartao = criar("div", "card-right");
-
-    const cores = criar("div", "colors");
-    const imagens = criar("div", "colors-image");
-    [principal, secundaria]
-      .filter((lista) => lista.length)
-      .forEach((lista) => imagens.appendChild(criarFaixaCores(lista)));
-    cores.append(criar("p", "ficha-rotulo font-3-xs cor-8", "(Cores)"), imagens);
-
-    const tipografia = criar("div", "tipografia");
-    tipografia.appendChild(
-      criar("p", "ficha-rotulo font-3-xs cor-8", "(Tipografia)"),
-    );
-    projeto.fontes.forEach((fonte) => {
-      const amostra = criar("span", "fonte-principal", fonte.amostra);
-      amostra.style.fontFamily = `"${fonte.nome}", sans-serif`;
-      amostra.style.fontWeight = fonte.peso;
-      tipografia.append(amostra, criar("p", "fonte-nome", fonte.nome));
-    });
-
-    cartao.append(cores, tipografia);
-    conteudo.appendChild(cartao);
-  }
-
   ficha.appendChild(conteudo);
+
+  aplicarIdentidade(ficha, projeto.identidade);
   return ficha;
 }
 
@@ -337,45 +390,30 @@ function criarProjeto(projeto) {
 
   const linha = criar("div", "projeto-linha");
   const nome = criar("h3", "projeto-nome font-1-xxl cor-12");
-  nome.append(
-    criarLink("", projeto.nome, projeto.site),
-    criar("sup", "font-3-xs cor-8", String(projeto.ano)),
-  );
+  nome.appendChild(criarLink("", projeto.nome, projeto.site));
   const botao = criar("button", "projeto-botao font-3-xs cor-12", "Ficha");
   botao.setAttribute("aria-controls", "ficha-" + projeto.slug);
   botao.setAttribute("aria-expanded", "false");
   botao.addEventListener("click", ativarFicha);
+  const codigo = criar("span", "projeto-codigo font-3-xs cor-8");
+  codigo.append(
+    criar("span", "projeto-numero"),
+    criar("span", "projeto-ano", String(projeto.ano)),
+  );
   linha.append(
-    criar("span", "projeto-codigo font-3-xs cor-8"),
+    codigo,
     nome,
     criar("span", "projeto-tipo font-3-xs cor-8", projeto.tipo),
     botao,
   );
 
-  const preview = criar("div", "projeto-preview");
-  preview.setAttribute("aria-hidden", "true");
-  const [corA, corB] = projeto.cores.principal;
-  if (corA) {
-    preview.style.background = `linear-gradient(to left, ${corA}, ${corB || corA})`;
-  }
-  if (projeto.logo) {
-    const logo = criar("img");
-    logo.src = projeto.logo;
-    logo.alt = "";
-    logo.loading = "lazy";
-    preview.appendChild(logo);
-  } else {
-    preview.appendChild(criar("span", "projeto-preview-nome", projeto.nome));
-  }
-
-  item.append(linha, preview, criarFicha(projeto));
-  if (temCursor.matches) item.addEventListener("mousemove", moverPreview);
+  item.append(linha, criarFicha(projeto));
   return item;
 }
 
 function numerarProjetos() {
-  document.querySelectorAll(".projeto-codigo").forEach((codigo, indice) => {
-    codigo.textContent = "OT-" + String(indice + 1).padStart(3, "0");
+  document.querySelectorAll(".projeto-numero").forEach((numero, indice) => {
+    numero.textContent = "OT-" + String(indice + 1).padStart(3, "0");
   });
 }
 
@@ -397,6 +435,31 @@ async function carregarProjetosGithub() {
     // Sem API (ex.: servidor local estático): mantém só os projetos do HTML.
   }
 }
+
+// Projetos escritos no HTML: busca a identidade ao abrir a ficha pela 1ª vez
+async function carregarIdentidadeDoRepo(item) {
+  if (item.dataset.identidade) return;
+  item.dataset.identidade = "carregando";
+
+  try {
+    const resposta = await fetch(
+      "/api/projetos?repo=" + encodeURIComponent(item.dataset.repo),
+    );
+    if (!resposta.ok) throw new Error("API indisponível");
+
+    const projeto = await resposta.json();
+    aplicarIdentidade(item.querySelector(".projeto-ficha"), projeto.identidade);
+    item.dataset.identidade = "ok";
+  } catch (erro) {
+    item.dataset.identidade = "indisponivel";
+  }
+}
+
+document.querySelectorAll(".projeto[data-repo]").forEach((item) => {
+  item
+    .querySelector(".projeto-botao")
+    .addEventListener("click", () => carregarIdentidadeDoRepo(item));
+});
 
 if (listaProjetos) {
   carregarProjetosGithub();

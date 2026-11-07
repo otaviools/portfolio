@@ -13,8 +13,8 @@
 .contato-linha {
   display: grid;
   grid-template-columns: 4fr 8fr;
-  gap: 24px 60px;
-  padding: 32px 0px;
+  gap: var(--espaco-4) 60px;
+  padding: var(--espaco-6) 0px;
   margin: 0px;
   border: none;
   border-top: 1px solid var(--linha);
@@ -24,6 +24,11 @@
 .contato-linha > legend,
 .contato-linha > h3 {
   padding-top: 6px;
+}
+
+/* Bloco sem rótulo: o conteúdo continua na coluna da direita */
+.contato-linha > :only-child {
+  grid-column: 2;
 }
 
 fieldset.contato-linha {
@@ -38,12 +43,12 @@ fieldset.contato-linha {
 
 .contato-topo {
   padding-top: 0px;
-  padding-bottom: 48px;
+  padding-bottom: var(--espaco-7);
   border-top: none;
 }
 
 .contato-topo h2 {
-  margin-bottom: 24px;
+  margin-bottom: var(--espaco-5);
 }
 
 .info-texto {
@@ -218,13 +223,24 @@ fieldset.contato-linha {
 
   .contato-linha {
     grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 24px 0px;
+    gap: var(--espaco-3);
+    padding: var(--espaco-5) 0px;
+    border-top: none;
+  }
+
+  .contato-linha > p:first-child,
+  .contato-linha > legend,
+  .contato-linha > h3 {
+    padding-top: 0px;
+  }
+
+  .contato-linha > :only-child {
+    grid-column: 1;
   }
 
   .contato-topo {
     padding-top: 0px;
-    padding-bottom: 32px;
+    padding-bottom: var(--espaco-5);
   }
 
   .info-texto {

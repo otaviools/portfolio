@@ -17,6 +17,13 @@
   --card-cima-texto: var(--cor-5);
   --linha: var(--cor-3);
   --ancora: 112px;
+  --espaco-1: 4px;
+  --espaco-2: 8px;
+  --espaco-3: 12px;
+  --espaco-4: 16px;
+  --espaco-5: 24px;
+  --espaco-6: 32px;
+  --espaco-7: 48px;
   --fonte-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
 }
 
