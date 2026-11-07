@@ -162,6 +162,44 @@ const observer = new IntersectionObserver((entries) => {
 const hiddenElements = document.querySelectorAll(".hidden, .revelar");
 hiddenElements.forEach((el) => observer.observe(el));
 
+//Section Trajetória
+const trajetoria = document.querySelector(".trajetoria-linha");
+const marcos = document.querySelectorAll(".marco");
+const anosTrajetoria = document.querySelectorAll(".trajetoria-anos li");
+let quadroTrajetoria = null;
+
+function atualizarTrajetoria() {
+  quadroTrajetoria = null;
+  const area = trajetoria.getBoundingClientRect();
+  const ponto = window.innerHeight * 0.6;
+  const progresso = Math.min(Math.max((ponto - area.top) / area.height, 0), 1);
+  trajetoria.style.setProperty("--progresso", progresso);
+
+  let anoAtual = null;
+  marcos.forEach((marco) => {
+    const ativo = marco.getBoundingClientRect().top < ponto;
+    marco.classList.toggle("ativo", ativo);
+    if (ativo) anoAtual = marco.dataset.ano;
+  });
+
+  anosTrajetoria.forEach((ano) =>
+    ano.classList.toggle("ativo", ano.dataset.ano === anoAtual),
+  );
+}
+
+function agendarTrajetoria() {
+  if (!quadroTrajetoria) {
+    quadroTrajetoria = requestAnimationFrame(atualizarTrajetoria);
+  }
+}
+
+if (trajetoria) {
+  document.querySelector(".trajetoria-bg").classList.add("trajetoria-js");
+  atualizarTrajetoria();
+  window.addEventListener("scroll", agendarTrajetoria, { passive: true });
+  window.addEventListener("resize", agendarTrajetoria);
+}
+
 //Section Portfólio - Ficha
 const fichas = document.querySelectorAll(".projeto-botao");
 
@@ -198,6 +236,170 @@ if (temCursor.matches) {
   projetos.forEach((projeto) =>
     projeto.addEventListener("mousemove", moverPreview),
   );
+}
+
+//Section Portfólio - GitHub (repositórios com o tópico "portfolio")
+const listaProjetos = document.querySelector(".portfolio-container");
+
+function criar(tag, classe, texto) {
+  const elemento = document.createElement(tag);
+  if (classe) elemento.className = classe;
+  if (texto !== undefined) elemento.textContent = texto;
+  return elemento;
+}
+
+function normalizarUrl(url) {
+  return (url || "").replace(/\/+$/, "").toLowerCase();
+}
+
+function projetoJaExiste(projeto) {
+  if (document.querySelector(".projeto-" + projeto.slug)) return true;
+
+  const links = [...document.querySelectorAll(".projeto-nome a")].map((a) =>
+    normalizarUrl(a.href),
+  );
+  return (
+    links.includes(normalizarUrl(projeto.site)) ||
+    links.includes(normalizarUrl(projeto.repositorio))
+  );
+}
+
+function criarLink(classe, texto, url) {
+  const link = criar("a", classe, texto);
+  link.href = url;
+  link.target = "_blank";
+  link.rel = "noopener";
+  return link;
+}
+
+function criarFaixaCores(cores) {
+  const faixa = criar("div", "cor-faixa");
+  cores.forEach((cor) => {
+    const bloco = criar("span");
+    bloco.style.backgroundColor = cor;
+    faixa.appendChild(bloco);
+  });
+  return faixa;
+}
+
+function criarFicha(projeto) {
+  const ficha = criar("div", "projeto-ficha");
+  ficha.id = "ficha-" + projeto.slug;
+  const conteudo = criar("div", "projeto-ficha-conteudo");
+
+  const texto = criar("div", "projeto-texto");
+  texto.append(
+    criar("p", "ficha-rotulo font-3-xs cor-8", "(Descrição)"),
+    criar("p", "font-2-m cor-9", projeto.descricao),
+    criar("p", "font-3-xs cor-7", projeto.stack.join(" | ")),
+  );
+  const verProjeto = criarLink(
+    "link-seta font-1-m-medium cor-12",
+    "Ver projeto ",
+    projeto.site,
+  );
+  verProjeto.appendChild(criar("span", "", "↗"));
+  texto.appendChild(verProjeto);
+  conteudo.appendChild(texto);
+
+  const { principal, secundaria } = projeto.cores;
+  if (principal.length || secundaria.length || projeto.fontes.length) {
+    const cartao = criar("div", "card-right");
+
+    const cores = criar("div", "colors");
+    const imagens = criar("div", "colors-image");
+    [principal, secundaria]
+      .filter((lista) => lista.length)
+      .forEach((lista) => imagens.appendChild(criarFaixaCores(lista)));
+    cores.append(criar("p", "ficha-rotulo font-3-xs cor-8", "(Cores)"), imagens);
+
+    const tipografia = criar("div", "tipografia");
+    tipografia.appendChild(
+      criar("p", "ficha-rotulo font-3-xs cor-8", "(Tipografia)"),
+    );
+    projeto.fontes.forEach((fonte) => {
+      const amostra = criar("span", "fonte-principal", fonte.amostra);
+      amostra.style.fontFamily = `"${fonte.nome}", sans-serif`;
+      amostra.style.fontWeight = fonte.peso;
+      tipografia.append(amostra, criar("p", "fonte-nome", fonte.nome));
+    });
+
+    cartao.append(cores, tipografia);
+    conteudo.appendChild(cartao);
+  }
+
+  ficha.appendChild(conteudo);
+  return ficha;
+}
+
+function criarProjeto(projeto) {
+  const item = criar("li", "projeto projeto-" + projeto.slug);
+
+  const linha = criar("div", "projeto-linha");
+  const nome = criar("h3", "projeto-nome font-1-xxl cor-12");
+  nome.append(
+    criarLink("", projeto.nome, projeto.site),
+    criar("sup", "font-3-xs cor-8", String(projeto.ano)),
+  );
+  const botao = criar("button", "projeto-botao font-3-xs cor-12", "Ficha");
+  botao.setAttribute("aria-controls", "ficha-" + projeto.slug);
+  botao.setAttribute("aria-expanded", "false");
+  botao.addEventListener("click", ativarFicha);
+  linha.append(
+    criar("span", "projeto-codigo font-3-xs cor-8"),
+    nome,
+    criar("span", "projeto-tipo font-3-xs cor-8", projeto.tipo),
+    botao,
+  );
+
+  const preview = criar("div", "projeto-preview");
+  preview.setAttribute("aria-hidden", "true");
+  const [corA, corB] = projeto.cores.principal;
+  if (corA) {
+    preview.style.background = `linear-gradient(to left, ${corA}, ${corB || corA})`;
+  }
+  if (projeto.logo) {
+    const logo = criar("img");
+    logo.src = projeto.logo;
+    logo.alt = "";
+    logo.loading = "lazy";
+    preview.appendChild(logo);
+  } else {
+    preview.appendChild(criar("span", "projeto-preview-nome", projeto.nome));
+  }
+
+  item.append(linha, preview, criarFicha(projeto));
+  if (temCursor.matches) item.addEventListener("mousemove", moverPreview);
+  return item;
+}
+
+function numerarProjetos() {
+  document.querySelectorAll(".projeto-codigo").forEach((codigo, indice) => {
+    codigo.textContent = "OT-" + String(indice + 1).padStart(3, "0");
+  });
+}
+
+async function carregarProjetosGithub() {
+  try {
+    const resposta = await fetch("/api/projetos");
+    if (!resposta.ok) return;
+
+    const novos = (await resposta.json()).filter(
+      (projeto) => projeto.site && !projetoJaExiste(projeto),
+    );
+    if (!novos.length) return;
+
+    const fragmento = document.createDocumentFragment();
+    novos.forEach((projeto) => fragmento.appendChild(criarProjeto(projeto)));
+    listaProjetos.prepend(fragmento);
+    numerarProjetos();
+  } catch (erro) {
+    // Sem API (ex.: servidor local estático): mantém só os projetos do HTML.
+  }
+}
+
+if (listaProjetos) {
+  carregarProjetosGithub();
 }
 
 //API form

@@ -248,6 +248,31 @@
   object-fit: fill;
 }
 
+/*Faixas de cor geradas pelos projetos do GitHub*/
+
+.cor-faixa {
+  display: flex;
+  flex-direction: column;
+  width: 40px;
+  height: 200px;
+}
+
+.cor-faixa span {
+  flex: 1;
+}
+
+.projeto-preview {
+  background-color: var(--cor-12);
+}
+
+.projeto-preview-nome {
+  font:
+    900 2rem/1 "Satoshi",
+    sans-serif;
+  letter-spacing: -0.03em;
+  color: var(--cor-0);
+}
+
 .tipografia {
   display: flex;
   flex-direction: column;
