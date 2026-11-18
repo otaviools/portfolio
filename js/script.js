@@ -371,13 +371,17 @@ function criarFicha(projeto) {
     criar("p", "font-2-m cor-9", projeto.descricao),
     criar("p", "font-3-xs cor-7", projeto.stack.join(" | ")),
   );
-  const verProjeto = criarLink(
-    "link-seta font-1-m-medium cor-12",
-    "Ver projeto ",
-    projeto.site,
-  );
-  verProjeto.appendChild(criar("span", "", "↗"));
-  texto.appendChild(verProjeto);
+  const links = criar("div", "projeto-links");
+  const destinos = [["GitHub ", projeto.repositorio]];
+  if (projeto.site && projeto.site !== projeto.repositorio) {
+    destinos.unshift(["Ver projeto ", projeto.site]);
+  }
+  destinos.forEach(([rotulo, url]) => {
+    const link = criarLink("link-seta font-1-m-medium cor-12", rotulo, url);
+    link.appendChild(criar("span", "", "↗"));
+    links.appendChild(link);
+  });
+  texto.appendChild(links);
   conteudo.appendChild(texto);
   ficha.appendChild(conteudo);
 
